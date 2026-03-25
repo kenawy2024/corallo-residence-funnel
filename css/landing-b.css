@@ -1,0 +1,578 @@
+/* ============================================
+   LANDING-B.CSS — Investment / ROI Variant
+   Financial Charts, Numbers, Dollar Feel
+   ============================================ */
+
+/* ---- Hero B — Numbers Forward ---- */
+#landing-b .hero {
+  background: linear-gradient(150deg, #060e1c 0%, #0a1628 50%, #0f1e38 100%);
+}
+
+#landing-b .hero-bg {
+  background-image:
+    linear-gradient(150deg, rgba(6,14,28,0.65) 0%, rgba(10,22,40,0.75) 100%),
+    url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1400&q=80');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+#landing-b .hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(6,14,28,0.65) 0%,
+    rgba(10,22,40,0.8) 60%,
+    rgba(6,14,28,0.97) 100%
+  );
+}
+
+/* ---- ROI Stats Hero Bar ---- */
+.roi-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roi-stat-item {
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.roi-stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+}
+
+.roi-stat-item:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.12);
+}
+
+.roi-stat-item .stat-num {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  display: block;
+  direction: ltr;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.roi-stat-item .stat-label {
+  font-size: 0.85rem;
+  color: var(--text-body);
+}
+
+.roi-stat-item .stat-sub {
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .roi-stats-bar { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ---- Why Invest Section ---- */
+.why-invest {
+  background: var(--navy-mid);
+  position: relative;
+}
+
+.why-invest::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.pillar-card {
+  background: linear-gradient(160deg, rgba(17,34,64,0.95), rgba(10,22,40,0.8));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.pillar-card:hover::before { transform: scaleX(1); }
+
+.pillar-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(201,168,76,0.15);
+}
+
+.pillar-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.pillar-card h3 {
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+
+.pillar-card p {
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+/* ---- ROI Calculator ---- */
+.calculator-section {
+  background: var(--navy);
+  background-image:
+    radial-gradient(rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.calculator-wrap {
+  background: var(--navy-light);
+  border: 2px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.calculator-wrap h3 {
+  text-align: center;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.calculator-wrap > p {
+  text-align: center;
+  font-size: 0.88rem;
+  margin-bottom: 2rem;
+}
+
+.calc-slider-group {
+  margin-bottom: 2rem;
+}
+
+.calc-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.calc-slider-label {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  font-weight: 600;
+}
+
+.calc-slider-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  direction: ltr;
+}
+
+input[type="range"].calc-range {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--navy);
+  box-shadow: 0 2px 8px rgba(201,168,76,0.5);
+  cursor: pointer;
+}
+
+input[type="range"].calc-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--navy);
+  cursor: pointer;
+}
+
+.calc-results {
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.calc-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.calc-result-item .r-label {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-bottom: 0.35rem;
+}
+
+.calc-result-item .r-value {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  direction: ltr;
+}
+
+.calc-result-item .r-sub {
+  font-size: 0.72rem;
+  color: var(--gray);
+  margin-top: 0.2rem;
+}
+
+.calc-disclaimer {
+  font-size: 0.72rem;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 500px) {
+  .calc-results-grid { grid-template-columns: 1fr; }
+  .calculator-wrap { padding: 1.75rem 1.25rem; }
+}
+
+/* ---- Units B — Investment View ---- */
+.units-section-b {
+  background: var(--navy-light);
+}
+
+.unit-card-b {
+  background: linear-gradient(160deg, var(--navy), rgba(10,22,40,0.9));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.unit-card-b:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 16px 40px rgba(201,168,76,0.2);
+}
+
+.unit-b-header {
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.04));
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.unit-b-type {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.unit-b-body {
+  padding: 1.5rem;
+}
+
+.unit-b-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.unit-b-egp {
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+.unit-b-egp-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.unit-b-usd {
+  text-align: left;
+}
+
+.unit-b-usd-label {
+  font-size: 0.72rem;
+  color: #25d366;
+  margin-bottom: 0.2rem;
+}
+
+.unit-b-usd-val {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #25d366;
+  direction: ltr;
+}
+
+.unit-b-metrics {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.unit-b-metric {
+  background: rgba(37,211,102,0.06);
+  border: 1px solid rgba(37,211,102,0.15);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  color: #25d366;
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+}
+
+.unit-b-metric .m-val { font-weight: 700; display: block; }
+.unit-b-metric .m-lbl { opacity: 0.8; display: block; font-size: 0.68rem; }
+
+/* ---- Strategic Location ---- */
+.location-section-b {
+  background: var(--navy-mid);
+}
+
+.location-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.loc-stat {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.loc-stat .loc-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.loc-stat .loc-text { }
+.loc-stat .loc-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: block;
+}
+.loc-stat .loc-desc {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+@media (max-width: 480px) {
+  .location-stats { grid-template-columns: 1fr; }
+}
+
+/* ---- Occupancy Proof ---- */
+.occupancy-bar-wrap {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin: 2rem 0;
+}
+
+.occupancy-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.occupancy-label-row span:first-child {
+  font-size: 0.9rem;
+  color: var(--text-body);
+}
+
+.occupancy-pct {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #25d366;
+}
+
+.months-breakdown {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  margin-top: 1rem;
+}
+
+.month-dot {
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.month-dot.high {
+  background: linear-gradient(135deg, #1a7a50, #25d366);
+}
+
+.month-dot.med {
+  background: linear-gradient(135deg, #1a5c40, #1a9555);
+}
+
+.month-dot.always {
+  background: linear-gradient(135deg, #0d4a30, #127a45);
+}
+
+/* ---- CTA Mid B ---- */
+.cta-mid-b {
+  background: linear-gradient(135deg, #060e1c 0%, #0a1628 100%);
+  border-top: 2px solid rgba(37,211,102,0.2);
+  border-bottom: 2px solid rgba(37,211,102,0.2);
+  padding: 3.5rem 0;
+  text-align: center;
+}
+
+.dollar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(37,211,102,0.1);
+  border: 1px solid rgba(37,211,102,0.3);
+  border-radius: 50px;
+  padding: 0.5rem 1.25rem;
+  color: #25d366;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Form Section B ---- */
+.form-section-b {
+  background: linear-gradient(135deg, var(--navy), #0a1f38);
+}
+
+/* ---- Urgency Price Banner ---- */
+.price-urgency-banner {
+  background: linear-gradient(135deg, rgba(220,60,60,0.1), rgba(180,40,40,0.06));
+  border: 1px solid rgba(220,60,60,0.3);
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.price-urgency-banner .ub-icon { font-size: 1.5rem; }
+
+.price-urgency-banner .ub-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.price-urgency-banner .ub-text strong {
+  display: block;
+  color: #ff8080;
+  font-size: 0.95rem;
+}
+
+.price-urgency-banner .ub-text span {
+  font-size: 0.82rem;
+  color: var(--gray);
+}
+
+/* ---- Final CTA B ---- */
+.final-cta-b {
+  background: linear-gradient(160deg, #060e1c 0%, #0a1628 100%);
+  padding: 4rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(37,211,102,0.15);
+}
+
+/* ---- Investment Summary Box ---- */
+.invest-summary {
+  background: linear-gradient(135deg, rgba(37,211,102,0.06), rgba(37,211,102,0.02));
+  border: 1px solid rgba(37,211,102,0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.invest-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+}
+
+.invest-summary-row:last-child { border-bottom: none; }
+
+.invest-summary-row .label { color: var(--text-body); }
+
+.invest-summary-row .value {
+  font-weight: 700;
+  color: var(--gold-light);
+  direction: ltr;
+}
+
+.invest-summary-row.highlight-row .value {
+  color: #25d366;
+  font-size: 1.1rem;
+}
