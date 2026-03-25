@@ -1,0 +1,524 @@
+/* ============================================
+   LANDING-EN.CSS — English Landing Page Overrides
+   Corallo Residence | LTR | International Buyers
+   Loads AFTER base.css — overrides only what's needed
+   ============================================ */
+
+/* ---- Google Fonts: DM Serif Display + Plus Jakarta Sans ---- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ---- LTR Direction Override ---- */
+body {
+  direction: ltr;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+}
+
+/* ---- Form Controls: LTR ---- */
+.form-control {
+  direction: ltr;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+select.form-control {
+  background-position: right 1rem center;
+  padding-left: 1.1rem;
+  padding-right: 2.5rem;
+}
+
+/* ---- Testimonial Quote: LTR position ---- */
+.testimonial-card::before {
+  right: auto;
+  left: 1.5rem;
+}
+
+/* ============================================
+   NAVBAR (English)
+   ============================================ */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar-links a {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  letter-spacing: 0.02em;
+}
+
+.navbar-links a:hover {
+  color: var(--gold-light);
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.navbar-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile nav open state */
+.navbar-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10, 22, 40, 0.98);
+  padding: 1.5rem;
+  gap: 1.25rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+/* ============================================
+   HERO SEARCH BAR
+   ============================================ */
+.hero-search-bar {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 60px;
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 780px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero-search-bar select {
+  flex: 1;
+  min-width: 140px;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hero-search-bar select option {
+  background: var(--navy-mid);
+  color: var(--white);
+}
+
+.hero-search-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(201,168,76,0.25);
+  flex-shrink: 0;
+}
+
+.hero-search-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: var(--navy);
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hero-search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+}
+
+/* ============================================
+   STATS BAR
+   ============================================ */
+.stats-bar {
+  background: var(--navy-light);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 1.5rem 0;
+}
+
+.stats-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 0.75rem;
+  border-right: 1px solid rgba(201,168,76,0.1);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-item .stat-num {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+
+.stat-item .stat-lbl {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-top: 0.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   UNIT CARDS
+   ============================================ */
+.unit-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: auto;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.unit-card-img {
+  position: relative;
+}
+
+/* ============================================
+   WHY INVEST SECTION
+   ============================================ */
+.invest-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.invest-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+}
+
+.invest-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.invest-card h3 {
+  color: var(--gold-light);
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.invest-card p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ============================================
+   AMENITIES GRID
+   ============================================ */
+.amenity-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.amenity-item:hover {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.2);
+}
+
+.amenity-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  background: rgba(201,168,76,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amenity-item span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-body);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ============================================
+   FOOTER (English 3-column)
+   ============================================ */
+.footer-en {
+  background: #060e1c;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 3.5rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-col h4 {
+  font-family: 'DM Serif Display', serif;
+  color: var(--gold-light);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.footer-col p {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col ul a {
+  color: var(--gray);
+  font-size: 0.88rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color 0.2s;
+}
+
+.footer-col ul a:hover {
+  color: var(--gold-light);
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--gold);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  background: rgba(201,168,76,0.2);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--gray);
+  margin-bottom: 0.6rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.footer-contact-item span:first-child {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  font-size: 0.75rem;
+  color: var(--gray);
+  max-width: 700px;
+  margin: 0 auto 0.75rem;
+  line-height: 1.6;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(154,154,154,0.6);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ============================================
+   SCARCITY BAR (Hero)
+   ============================================ */
+.hero-scarcity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(220,60,60,0.1);
+  border: 1px solid rgba(220,60,60,0.3);
+  border-radius: 50px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ff8080;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-bottom: 1.25rem;
+}
+
+.hero-scarcity .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4444;
+  animation: pulse-red 1.5s infinite;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  /* Hero search */
+  .hero-search-bar {
+    border-radius: 16px;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-search-bar select {
+    width: 100%;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .hero-search-divider {
+    display: none;
+  }
+
+  .hero-search-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Stats bar */
+  .stats-bar-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .stat-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 1rem;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-grid .footer-col:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .stats-bar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
