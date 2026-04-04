@@ -72,19 +72,35 @@
     return;
   }
 
-  // ---- Detect via ipapi.co ----
+  // ---- Detect via ipapi.co → ip-api.com → navigator.language ----
   fetch('https://ipapi.co/json/')
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      var country = (data && data.country_code) ? data.country_code : '';
-      var lang = ARAB_COUNTRIES.indexOf(country) !== -1 ? 'ar' : 'en';
-      console.log('[Router] Detected country:', country, '→', lang);
-      redirect(lang, savedVariant);
+      if (data && data.country_code && !data.error) {
+        var lang = ARAB_COUNTRIES.indexOf(data.country_code) !== -1 ? 'ar' : 'en';
+        console.log('[Router] ipapi.co country:', data.country_code, '→', lang);
+        redirect(lang, savedVariant);
+      } else {
+        throw new Error('invalid response from ipapi.co');
+      }
     })
     .catch(function () {
-      // Fallback: Arabic if detection fails
-      console.log('[Router] Detection failed, defaulting to Arabic');
-      redirect('ar', savedVariant);
+      // Fallback 1: ip-api.com
+      fetch('https://ip-api.com/json/?fields=countryCode')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var country = (data && data.countryCode) ? data.countryCode : '';
+          var lang = ARAB_COUNTRIES.indexOf(country) !== -1 ? 'ar' : 'en';
+          console.log('[Router] ip-api.com country:', country, '→', lang);
+          redirect(lang, savedVariant);
+        })
+        .catch(function () {
+          // Fallback 2: navigator.language
+          var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+          var lang = navLang.startsWith('ar') ? 'ar' : 'en';
+          console.log('[Router] navigator.language fallback:', navLang, '→', lang);
+          redirect(lang, savedVariant);
+        });
     });
 
 })();
