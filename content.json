@@ -1,0 +1,72 @@
+{
+  "general": {
+    "logo": "Corallo-Logo.png",
+    "whatsapp_number": "20XXXXXXXXXX",
+    "phone_display": "+20 XX XXXX XXXX"
+  },
+  "landing_a": {
+    "meta_title": "كورالو ريزيدنس — امتلك شاليه على البحر الأحمر في بورت غالب",
+    "hero_badge": "✦ بورت غالب، البحر الأحمر، مصر",
+    "hero_title": "امتلك شاليه في بورت غالب…<br><span class=\"highlight text-gradient\">واستثمر في حياة مختلفة</span>",
+    "hero_subtitle": "حياة على حافة البحر الأحمر — هدوء حقيقي، فخامة راقية، وطبيعة بكر.\n        كورالو ريزيدنس مش مجرد عقار، ده اختيار أسلوب حياة مختلف.",
+    "stat_families": "200+",
+    "stat_occupancy": "90%+",
+    "stat_airport": "5 دق",
+    "units_left": "7",
+    "scarcity_text": "باقي <strong style=\"color:#ff4444;font-size:1.1rem;\">7</strong> وحدات فقط بسعر الإطلاق — الأسعار ستتغير قريباً",
+    "units": [
+      { "name": "استوديو", "size": "35–45 م²", "bathrooms": "1 حمام", "view": "إطلالة بحر", "price": "من 1.2 مليون جنيه", "emoji": "🛏️", "badge": "استوديو", "image": "" },
+      { "name": "شقة 1 غرفة نوم", "size": "55–75 م²", "bathrooms": "2 حمام", "view": "إطلالة بحر", "price": "من 2.1 مليون جنيه", "emoji": "🏠", "badge": "1 غرفة نوم", "image": "" },
+      { "name": "شقة 2 غرفة نوم", "size": "90–120 م²", "bathrooms": "2 حمام", "view": "إطلالة بحر", "price": "من 3.8 مليون جنيه", "emoji": "🏡", "badge": "2 غرفة نوم", "image": "" },
+      { "name": "فيلا ساحلية", "size": "180–250 م²", "bathrooms": "3 حمامات", "view": "واجهة بحرية", "price": "من 6.5 مليون جنيه", "emoji": "🏰", "badge": "فيلا", "image": "" }
+    ],
+    "payment_plans": [
+      { "name": "مقدم 15%", "down": "15%", "years": "10", "discount": "", "featured": false },
+      { "name": "مقدم 20%", "down": "20%", "years": "8", "discount": "", "featured": false },
+      { "name": "🌟 مقدم 30%", "down": "30%", "years": "6", "discount": "", "featured": true },
+      { "name": "مقدم 50%", "down": "50%", "years": "4", "discount": "", "featured": false }
+    ]
+  },
+  "landing_b": {
+    "meta_title": "كورالو ريزيدنس — اشتري بالمصري واجر بالدولار | استثمار بورت غالب",
+    "hero_badge": "💵 استثمار بالدولار — بورت غالب، مصر",
+    "hero_title": "اشتري بالمصري…<br><span class=\"text-gradient\">واجر بالدولار من أول يوم</span>",
+    "hero_subtitle": "كورالو ريزيدنس في بورت غالب — منطقة سياحية عالمية غير موسمية.\n        أجانب طول السنة = دخل دولاري ثابت طول السنة.",
+    "stat_roi": "15–22%",
+    "stat_occupancy": "90%+",
+    "stat_monthly": "$800+",
+    "units": [
+      { "name": "🛏️ استوديو", "price_egp": "1.2 – 1.8 مليون", "rent_usd": "$600 – $900", "roi": "18–22%", "size": "35–45م²", "occupancy": "90%", "badge": "إشغال عالي", "badge_type": "green", "featured": false, "image": "" },
+      { "name": "🏠 1 غرفة نوم", "price_egp": "2.1 – 3.2 مليون", "rent_usd": "$900 – $1,400", "roi": "15–20%", "size": "55–75م²", "occupancy": "92%", "badge": "الأكثر طلباً", "badge_type": "gold", "featured": true, "image": "" },
+      { "name": "🏡 2 غرفة نوم", "price_egp": "3.8 – 5.5 مليون", "rent_usd": "$1,400 – $2,200", "roi": "15–18%", "size": "90–120م²", "occupancy": "88%", "badge": "دخل عائلي", "badge_type": "gold", "featured": false, "image": "" },
+      { "name": "🏰 فيلا", "price_egp": "6.5 – 12 مليون", "rent_usd": "$2,500 – $4,500", "roi": "12–16%", "size": "180–250م²", "occupancy": "85%", "badge": "عائد ممتاز", "badge_type": "gold", "featured": false, "image": "" }
+    ],
+    "payment_plans": [
+      { "name": "خطة A", "down": "15%", "years": "10", "features": "أقل مقدم ممكن", "discount": "", "featured": false },
+      { "name": "خطة B", "down": "20%", "years": "8", "features": "توازن مثالي", "discount": "", "featured": false },
+      { "name": "⭐ خطة C", "down": "30%", "years": "6", "features": "خصم 3% إضافي", "discount": "خصم 3%", "featured": true },
+      { "name": "خطة D", "down": "50%", "years": "4", "features": "خصم 5% + تسليم أسرع", "discount": "خصم 5%", "featured": false }
+    ]
+  },
+  "landing_en": {
+    "meta_title": "Corallo Residence — Own a Luxury Chalet on the Red Sea | Port Ghalib",
+    "hero_badge": "Port Ghalib, Red Sea, Egypt",
+    "hero_title": "Own a Luxury Chalet<br><span class=\"text-gradient\">on the Red Sea</span>",
+    "hero_subtitle": "Where the desert meets turquoise waters — Corallo Residence offers you a rare blend of luxury living and exceptional investment returns at one of Egypt's most exclusive resorts.",
+    "hero_scarcity": "Only 7 units remain at launch pricing",
+    "stat_roi": "15–22%",
+    "stat_occupancy": "90%+",
+    "stat_from": "from €30K",
+    "units": [
+      { "name": "Studio", "price": "€30,000", "size": "38 m²", "beds": "Studio", "baths": "1 Bath", "desc": "Sea-view studio with fully fitted kitchen and private terrace. Ideal for holiday rental.", "badge": "Best Value", "image": "icons/studio-new.png" },
+      { "name": "1 Bedroom", "price": "€55,000", "size": "62 m²", "beds": "1 Bed", "baths": "1 Bath", "desc": "Spacious one-bedroom with open-plan living area and panoramic Red Sea views.", "badge": "Popular", "image": "icons/bed1-new.png" },
+      { "name": "2 Bedrooms", "price": "€100,000", "size": "105 m²", "beds": "2 Beds", "baths": "2 Baths", "desc": "Family-sized apartment with private balcony and direct access to resort facilities.", "badge": "Top Pick", "image": "icons/bed2-new.png" },
+      { "name": "Penthouse", "price": "€170,000", "size": "210 m²", "beds": "3 Beds", "baths": "3 Baths", "desc": "Rooftop penthouse with private plunge pool, 360° sea views, and premium finishes.", "badge": "Exclusive", "image": "icons/penthouse-new.png" }
+    ],
+    "testimonials": [
+      { "text": "We purchased a 1-bedroom unit in 2023 and have already seen 19% ROI in year one. The management team handles everything — we just receive our quarterly payment.", "name": "James & Claire M.", "location": "Manchester, United Kingdom" },
+      { "text": "I was looking for a Red Sea investment for two years. Corallo ticked every box — freehold, managed, great location. The numbers speak for themselves.", "name": "Thomas M.", "location": "Munich, Germany" },
+      { "text": "As an Egyptian living in Cairo, this was the perfect second home. The resort lifestyle is incredible and knowing it generates income when I'm not there gives peace of mind.", "name": "Ahmed K.", "location": "Cairo, Egypt" }
+    ]
+  }
+}

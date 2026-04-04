@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corallo CMS — لوحة التحكم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e0c06a;
+      --navy: #0a1628;
+      --navy-mid: #0f1f3a;
+      --navy-light: #152840;
+      --green: #25d366;
+      --red: #e53e3e;
+      --gray: #94a3b8;
+      --white: #ffffff;
+      --border: #1e3a5f;
+      --sidebar-w: 220px;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ========== LOGIN ========== */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, #0f1f3a 0%, #0a1628 100%);
+    }
+    .login-box {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+    .login-box .logo-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
+    }
+    .login-box .sub {
+      color: var(--gray);
+      font-size: 0.88rem;
+      margin-bottom: 2rem;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      outline: none;
+      letter-spacing: 2px;
+    }
+    .login-box input:focus { border-color: var(--gold); }
+    .login-box .err { color: var(--red); font-size: 0.85rem; margin-bottom: 1rem; min-height: 1.2em; }
+
+    /* ========== DASHBOARD ========== */
+    #dashboard { display: none; min-height: 100vh; }
+
+    .cms-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--navy-mid);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 100;
+    }
+    .cms-header .brand { font-weight: 700; color: var(--gold-light); font-size: 1rem; }
+    .cms-header .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    .cms-layout {
+      display: flex;
+      padding-top: 60px;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .cms-sidebar {
+      width: var(--sidebar-w);
+      background: var(--navy-mid);
+      border-left: 1px solid var(--border);
+      position: fixed;
+      top: 60px;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      padding: 1rem 0;
+    }
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-align: right;
+      transition: all 0.15s;
+      border-right: 3px solid transparent;
+    }
+    .tab-btn:hover { background: rgba(201,168,76,0.06); color: var(--white); }
+    .tab-btn.active {
+      background: rgba(201,168,76,0.1);
+      color: var(--gold-light);
+      border-right-color: var(--gold);
+    }
+
+    /* Content area */
+    .cms-content {
+      margin-right: var(--sidebar-w);
+      flex: 1;
+      padding: 2rem;
+      padding-bottom: 100px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section headings */
+    .section-heading {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sub-heading {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    /* Form fields */
+    .field-group { margin-bottom: 1.25rem; }
+    .field-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 0.35rem;
+    }
+    .field-input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field-input:focus { border-color: var(--gold); }
+    textarea.field-input { min-height: 80px; resize: vertical; }
+
+    .fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fields-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+    /* Units / Plans tables */
+    .units-table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+    .units-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .units-table th {
+      background: var(--navy);
+      color: var(--gold-light);
+      padding: 0.5rem 0.6rem;
+      text-align: right;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid var(--border);
+    }
+    .units-table td {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border);
+      background: var(--navy-mid);
+      vertical-align: middle;
+    }
+    .units-table input[type="text"],
+    .units-table input[type="url"],
+    .units-table input[type="file"],
+    .units-table select {
+      width: 100%;
+      padding: 0.35rem 0.5rem;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--white);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.82rem;
+      outline: none;
+      min-width: 80px;
+    }
+    .units-table input:focus { border-color: var(--gold); }
+    .units-table input[type="checkbox"] { width: auto; }
+
+    .img-preview {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto;
+    }
+    .img-preview-empty {
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin: 0 auto;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 8px;
+      border: none;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-gold { background: var(--gold); color: #0a1628; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline { background: none; border: 1px solid var(--border); color: var(--white); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+    .btn-red { background: rgba(229,62,62,0.15); color: var(--red); border: 1px solid rgba(229,62,62,0.3); }
+    .btn-red:hover { background: rgba(229,62,62,0.25); }
+    .btn-green { background: rgba(37,211,102,0.15); color: var(--green); border: 1px solid rgba(37,211,102,0.3); font-size: 0.82rem; padding: 0.3rem 0.75rem; }
+    .btn-sm { padding: 0.3rem 0.7rem; font-size: 0.8rem; }
+    .btn-logout { background: none; border: 1px solid var(--border); color: var(--gray); font-family: 'Cairo', sans-serif; font-size: 0.82rem; cursor: pointer; border-radius: 8px; padding: 0.4rem 0.9rem; }
+    .btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+    /* Save bar */
+    .save-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    .save-status { font-size: 0.85rem; }
+    .save-status.success { color: var(--green); }
+    .save-status.error { color: var(--red); }
+    .save-status.saving { color: var(--gold-light); }
+
+    /* GitHub setup box */
+    .info-box {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .info-box strong { color: var(--gold-light); }
+
+    /* Uploading spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(201,168,76,0.3);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cms-sidebar { width: 180px; }
+      .cms-content { margin-right: 180px; padding: 1rem; }
+      .fields-row, .fields-row-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== LOGIN ========== -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="logo-text">🏠 Corallo CMS</div>
+    <div class="sub">لوحة تحكم المحتوى</div>
+    <input type="password" id="pwd-input" placeholder="كلمة السر" autofocus
+           onkeydown="if(event.key==='Enter') doLogin()">
+    <div class="err" id="login-err"></div>
+    <button class="btn btn-gold" style="width:100%" onclick="doLogin()">دخول</button>
+  </div>
+</div>
+
+<!-- ========== DASHBOARD ========== -->
+<div id="dashboard">
+  <!-- Header -->
+  <header class="cms-header">
+    <span class="brand">🏠 Corallo CMS Dashboard</span>
+    <div class="header-actions">
+      <a href="landing-a.html" target="_blank" class="btn btn-outline btn-sm">معاينة A</a>
+      <a href="landing-b.html" target="_blank" class="btn btn-outline btn-sm">معاينة B</a>
+      <a href="landing-en.html" target="_blank" class="btn btn-outline btn-sm">Preview EN</a>
+      <button class="btn-logout" onclick="doLogout()">تسجيل خروج</button>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="cms-layout">
+    <!-- Sidebar -->
+    <aside class="cms-sidebar">
+      <button class="tab-btn active" onclick="showTab('general', this)">⚙️ إعدادات عامة</button>
+      <button class="tab-btn" onclick="showTab('landing-a', this)">📄 Landing A — عربي</button>
+      <button class="tab-btn" onclick="showTab('landing-b', this)">📈 Landing B — عربي</button>
+      <button class="tab-btn" onclick="showTab('landing-en', this)">🌍 Landing EN</button>
+      <button class="tab-btn" onclick="showTab('github', this)">🔑 إعدادات GitHub</button>
+    </aside>
+
+    <!-- Content -->
+    <main class="cms-content">
+
+      <!-- ===== GENERAL TAB ===== -->
+      <div id="tab-general" class="tab-panel active">
+        <div class="section-heading">⚙️ الإعدادات العامة</div>
+        <div class="fields-row">
+          <div class="field-group">
+            <label class="field-label">رقم واتساب (بدون + مثل: 201012345678)</label>
+            <input type="text" class="field-input" id="g-whatsapp" placeholder="20XXXXXXXXXX">
+          </div>
+          <div class="field-group">
+            <label class="field-label">رقم الهاتف للعرض</label>
+            <input type="text" class="field-input" id="g-phone" placeholder="+20 XX XXXX XXXX">
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">شعار الموقع (اسم الملف أو مسار كامل)</label>
+          <input type="text" class="field-input" id="g-logo" placeholder="Corallo-Logo.png">
+        </div>
+      </div>
+
+      <!-- ===== LANDING A TAB ===== -->
+      <div id="tab-landing-a" class="tab-panel">
+        <div class="section-heading">📄 Landing A — صفحة الحياة الفاخرة</div>
+
+        <div class="sub-heading">Hero Section</div>
+        <div class="field-group">
+          <label class="field-label">عنوان الصفحة (meta title)</label>
+          <input type="text" class="field-input" id="a-meta-title">
+        </div>
+        <div class="field-group">
+          <label class="field-label">الـ Badge</label>
+          <input type="text" class="field-input" id="a-hero-badge">
+        </div>
+        <div class="field-group">
+          <label class="field-label">العنوان الرئيسي (HTML مسموح — استخدم &lt;br&gt; للسطر الجديد)</label>
+          <textarea class="field-input" id="a-hero-title"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">النص التعريفي</label>
+          <textarea class="field-input" id="a-hero-subtitle"></textarea>
+        </div>
+
+        <div class="sub-heading">الإحصائيات</div>
+        <div class="fields-row-3">
+          <div class="field-group">
+            <label class="field-label">عدد العائلات</label>
+            <input type="text" class="field-input" id="a-stat-families">
+          </div>
+          <div class="field-group">
+            <label class="field-label">معدل الإشغال</label>
+            <input type="text" class="field-input" id="a-stat-occupancy">
+          </div>
+          <div class="field-group">
+            <label class="field-label">المسافة للمطار</label>
+            <input type="text" class="field-input" id="a-stat-airport">
+          </div>
+        </div>
+
+        <div class="sub-heading">شريط الندرة</div>
+        <div class="field-group">
+          <label class="field-label">نص الشريط (HTML مسموح)</label>
+          <textarea class="field-input" id="a-scarcity-text" style="min-height:60px;"></textarea>
+        </div>
+
+        <div class="sub-heading">الوحدات</div>
+        <div class="units-table-wrap">
+          <table class="units-table" id="units-a-table">
+            <thead>
+              <tr>
+                <th>الاسم</th>
+                <th>الـ Badge</th>
+                <th>الإيموجي</th>
+                <th>المساحة</th>
+                <th>الحمامات</th>
+                <th>الإطلالة</th>
+                <th>السعر</th>
+                <th>صورة</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="units-a-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addUnitRow('a')">+ إضافة وحدة</button>
+
+        <div class="sub-heading">خطط السداد</div>
+        <div class="units-table-wrap">
+          <table class="units-table" id="plans-a-table">
+            <thead>
+              <tr>
+                <th>اسم الخطة</th>
+                <th>المقدم</th>
+                <th>سنوات التقسيط</th>
+                <th>خصم</th>
+                <th>مميزة؟</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="plans-a-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addPlanRow('a')">+ إضافة خطة</button>
+      </div>
+
+      <!-- ===== LANDING B TAB ===== -->
+      <div id="tab-landing-b" class="tab-panel">
+        <div class="section-heading">📈 Landing B — صفحة الاستثمار</div>
+
+        <div class="sub-heading">Hero Section</div>
+        <div class="field-group">
+          <label class="field-label">عنوان الصفحة (meta title)</label>
+          <input type="text" class="field-input" id="b-meta-title">
+        </div>
+        <div class="field-group">
+          <label class="field-label">الـ Badge</label>
+          <input type="text" class="field-input" id="b-hero-badge">
+        </div>
+        <div class="field-group">
+          <label class="field-label">العنوان الرئيسي (HTML)</label>
+          <textarea class="field-input" id="b-hero-title"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">النص التعريفي</label>
+          <textarea class="field-input" id="b-hero-subtitle"></textarea>
+        </div>
+
+        <div class="sub-heading">الإحصائيات</div>
+        <div class="fields-row-3">
+          <div class="field-group">
+            <label class="field-label">ROI</label>
+            <input type="text" class="field-input" id="b-stat-roi">
+          </div>
+          <div class="field-group">
+            <label class="field-label">معدل الإشغال</label>
+            <input type="text" class="field-input" id="b-stat-occupancy">
+          </div>
+          <div class="field-group">
+            <label class="field-label">الدخل الشهري</label>
+            <input type="text" class="field-input" id="b-stat-monthly">
+          </div>
+        </div>
+
+        <div class="sub-heading">الوحدات</div>
+        <div class="units-table-wrap">
+          <table class="units-table" id="units-b-table">
+            <thead>
+              <tr>
+                <th>الاسم</th>
+                <th>السعر بالجنيه</th>
+                <th>إيجار $</th>
+                <th>ROI</th>
+                <th>المساحة</th>
+                <th>إشغال</th>
+                <th>Badge</th>
+                <th>نوع Badge</th>
+                <th>مميزة؟</th>
+                <th>صورة</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="units-b-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addUnitRow('b')">+ إضافة وحدة</button>
+
+        <div class="sub-heading">خطط السداد</div>
+        <div class="units-table-wrap">
+          <table class="units-table">
+            <thead>
+              <tr>
+                <th>اسم الخطة</th>
+                <th>المقدم</th>
+                <th>سنوات</th>
+                <th>المميزات</th>
+                <th>خصم</th>
+                <th>مميزة؟</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="plans-b-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addPlanRow('b')">+ إضافة خطة</button>
+      </div>
+
+      <!-- ===== LANDING EN TAB ===== -->
+      <div id="tab-landing-en" class="tab-panel">
+        <div class="section-heading">🌍 Landing EN — النسخة الإنجليزية</div>
+
+        <div class="sub-heading">Hero Section</div>
+        <div class="field-group">
+          <label class="field-label">Page Title (meta title)</label>
+          <input type="text" class="field-input" id="en-meta-title">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Hero Badge</label>
+          <input type="text" class="field-input" id="en-hero-badge">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Hero Title (HTML allowed)</label>
+          <textarea class="field-input" id="en-hero-title"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Hero Subtitle</label>
+          <textarea class="field-input" id="en-hero-subtitle"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Scarcity Text</label>
+          <input type="text" class="field-input" id="en-hero-scarcity">
+        </div>
+
+        <div class="sub-heading">Stats</div>
+        <div class="fields-row-3">
+          <div class="field-group">
+            <label class="field-label">ROI</label>
+            <input type="text" class="field-input" id="en-stat-roi">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Occupancy</label>
+            <input type="text" class="field-input" id="en-stat-occupancy">
+          </div>
+          <div class="field-group">
+            <label class="field-label">From Price</label>
+            <input type="text" class="field-input" id="en-stat-from">
+          </div>
+        </div>
+
+        <div class="sub-heading">Properties</div>
+        <div class="units-table-wrap">
+          <table class="units-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Size</th>
+                <th>Beds</th>
+                <th>Baths</th>
+                <th>Description</th>
+                <th>Badge</th>
+                <th>Image</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody id="units-en-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addUnitRow('en')">+ Add Unit</button>
+
+        <div class="sub-heading">Testimonials</div>
+        <div class="units-table-wrap">
+          <table class="units-table">
+            <thead>
+              <tr>
+                <th>Quote</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody id="testimonials-en-body"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addTestimonialRow()">+ Add Testimonial</button>
+      </div>
+
+      <!-- ===== GITHUB TAB ===== -->
+      <div id="tab-github" class="tab-panel">
+        <div class="section-heading">🔑 إعدادات GitHub & النشر</div>
+        <div class="info-box">
+          <strong>طريقة الحفظ:</strong> عند الضغط على "حفظ ونشر"، البيانات بتتحفظ في content.json على GitHub.
+          Vercel بعدين بيعمل deploy تلقائي (بيأخد 20–30 ثانية).<br><br>
+          <strong>إنشاء Personal Access Token:</strong> روح GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → New → اختار صلاحية <strong>repo</strong> بس.
+        </div>
+
+        <div class="fields-row">
+          <div class="field-group">
+            <label class="field-label">GitHub Owner (اسم المستخدم)</label>
+            <input type="text" class="field-input" id="gh-owner" placeholder="kenawy2024">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Repository Name</label>
+            <input type="text" class="field-input" id="gh-repo" placeholder="corallo-residence-funnel">
+          </div>
+        </div>
+        <div class="fields-row">
+          <div class="field-group">
+            <label class="field-label">Branch</label>
+            <input type="text" class="field-input" id="gh-branch" placeholder="master">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Personal Access Token (محفوظ في المتصفح فقط)</label>
+            <input type="password" class="field-input" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
+          </div>
+        </div>
+        <button class="btn btn-gold" onclick="saveGitHubSettings()">حفظ إعدادات GitHub</button>
+        <div id="gh-status" style="margin-top:1rem;font-size:0.85rem;"></div>
+
+        <div class="sub-heading" style="margin-top:2rem;">اختبار الاتصال</div>
+        <button class="btn btn-outline" onclick="testGitHub()">اختبر الاتصال بـ GitHub</button>
+        <div id="gh-test-result" style="margin-top:0.75rem;font-size:0.85rem;"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Save Bar -->
+  <div class="save-bar">
+    <div id="save-status" class="save-status"></div>
+    <button class="btn btn-gold" onclick="saveChanges()" id="save-btn">
+      💾 حفظ ونشر التغييرات
+    </button>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
