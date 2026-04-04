@@ -21,7 +21,7 @@
 
   // ==================== LOGIN ====================
   window.doLogin = function () {
-    var pwd = document.getElementById('pwd-input').value;
+    var pwd = document.getElementById('pwd-input').value.trim();
     if (pwd === CMS_PASSWORD) {
       sessionStorage.setItem('cms_auth', '1');
       document.getElementById('login-screen').style.display = 'none';
