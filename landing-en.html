@@ -116,6 +116,23 @@
 </head>
 <body>
 
+<!-- Language Toggle -->
+<button id="lang-toggle" onclick="switchToAr()"
+  style="position:fixed; top:16px; right:16px; z-index:9999;
+         background:#c9a84c; color:#fff; border:none; border-radius:24px;
+         padding:8px 18px; font-size:14px; font-weight:600; cursor:pointer;
+         box-shadow:0 2px 12px rgba(0,0,0,0.3);">
+  🌐 عربي
+</button>
+<script>
+function switchToAr() {
+  localStorage.setItem('corallo_lang', 'ar');
+  var variant = localStorage.getItem('corallo_variant') || (Math.random() < 0.5 ? 'a' : 'b');
+  localStorage.setItem('corallo_variant', variant);
+  window.location.href = 'landing-' + variant + '.html';
+}
+</script>
+
 <!-- ========== NAVBAR ========== -->
 <nav class="navbar" id="navbar">
   <div class="container">
