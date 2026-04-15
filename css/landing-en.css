@@ -1,34 +1,36 @@
 /* ============================================
-   LANDING-EN.CSS — English Landing Page Overrides
-   Corallo Residence | LTR | International Buyers
-   Loads AFTER base.css — overrides only what's needed
+   LANDING-EN.CSS — English Landing Page
+   Corallo Residence | Brand Kit Applied
+   Fonts: Cormorant Garamond + Raleway
+   Colors: #484EA3 | #91CBC5 | #C35031 | #EEEBE5
    ============================================ */
 
-/* ---- Google Fonts: DM Serif Display + Plus Jakarta Sans ---- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+/* ---- Brand Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700;800&display=swap');
 
-/* ---- LTR Direction Override ---- */
+/* ---- LTR Direction + Base Font ---- */
 body {
   direction: ltr;
   text-align: left;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
 }
 
 .btn {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 /* ---- Form Controls: LTR ---- */
 .form-control {
   direction: ltr;
   text-align: left;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 select.form-control {
@@ -37,14 +39,67 @@ select.form-control {
   padding-right: 2.5rem;
 }
 
-/* ---- Testimonial Quote: LTR position ---- */
+/* ---- Testimonial Quote ---- */
 .testimonial-card::before {
   right: auto;
   left: 1.5rem;
 }
 
 /* ============================================
-   NAVBAR (English)
+   BRAND COLOR OVERRIDES
+   ============================================ */
+
+/* Gold line → Terracotta */
+.gold-line {
+  height: 3px;
+  width: 56px;
+  background: #C35031 !important;
+  border-radius: 2px;
+  margin: 0.75rem auto 1.5rem;
+}
+
+/* Badge gold → Brand indigo */
+.badge-gold {
+  background: #484EA3 !important;
+  color: #ffffff !important;
+  border-color: #484EA3 !important;
+}
+
+/* Primary button → Brand indigo */
+.btn-gold {
+  background: #484EA3 !important;
+  color: #ffffff !important;
+  border-color: #484EA3 !important;
+}
+.btn-gold:hover {
+  background: #3a3f8f !important;
+  border-color: #3a3f8f !important;
+  box-shadow: 0 6px 20px rgba(72,78,163,0.35) !important;
+}
+
+/* Outline button → Brand indigo */
+.btn-outline-gold {
+  border-color: #484EA3 !important;
+  color: #484EA3 !important;
+}
+.btn-outline-gold:hover {
+  background: #484EA3 !important;
+  color: #ffffff !important;
+}
+
+/* Text gold → Brand indigo */
+.text-gold { color: #484EA3 !important; }
+
+/* text-gradient on hero title → teal → indigo */
+.text-gradient {
+  background: linear-gradient(135deg, #91CBC5, #484EA3) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ============================================
+   NAVBAR
    ============================================ */
 .navbar-links {
   display: flex;
@@ -55,16 +110,17 @@ select.form-control {
 
 .navbar-links a {
   color: rgba(255,255,255,0.85);
-  font-size: 0.92rem;
-  font-weight: 500;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
   transition: color 0.25s ease;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .navbar-links a:hover {
-  color: var(--gold-light);
+  color: #91CBC5;
 }
 
 .navbar-toggle {
@@ -81,12 +137,12 @@ select.form-control {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--gold);
+  background: #91CBC5;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* Mobile nav open state */
+/* Mobile nav open */
 .navbar-links.open {
   display: flex;
   flex-direction: column;
@@ -94,20 +150,20 @@ select.form-control {
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(10, 22, 40, 0.98);
+  background: rgba(44, 50, 130, 0.98);
   padding: 1.5rem;
   gap: 1.25rem;
-  border-bottom: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(145,203,197,0.3);
 }
 
 /* ============================================
    HERO SEARCH BAR
    ============================================ */
 .hero-search-bar {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(201, 168, 76, 0.25);
+  border: 1px solid rgba(145,203,197,0.4);
   border-radius: 60px;
   padding: 0.75rem 0.75rem 0.75rem 1.5rem;
   display: flex;
@@ -123,9 +179,10 @@ select.form-control {
   min-width: 140px;
   background: transparent;
   border: none;
-  color: var(--white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.9rem;
+  font-weight: 500;
   padding: 0.5rem 0.75rem;
   outline: none;
   cursor: pointer;
@@ -134,26 +191,28 @@ select.form-control {
 }
 
 .hero-search-bar select option {
-  background: var(--navy-mid);
-  color: var(--white);
+  background: #3a3f8f;
+  color: #ffffff;
 }
 
 .hero-search-divider {
   width: 1px;
   height: 32px;
-  background: rgba(201,168,76,0.25);
+  background: rgba(145,203,197,0.4);
   flex-shrink: 0;
 }
 
+/* Search button → Terracotta (stands out on indigo hero) */
 .hero-search-btn {
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
-  color: var(--navy);
+  background: linear-gradient(135deg, #C35031, #d45a3a, #e06b4a);
+  color: #ffffff;
   border: none;
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.92rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.88rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s ease;
@@ -162,17 +221,17 @@ select.form-control {
 
 .hero-search-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+  box-shadow: 0 6px 20px rgba(195,80,49,0.45);
 }
 
 /* ============================================
    STATS BAR
    ============================================ */
 .stats-bar {
-  background: var(--navy-light);
-  border-top: 1px solid rgba(201,168,76,0.15);
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  padding: 1.5rem 0;
+  background: #484EA3 !important;
+  border-top: none;
+  border-bottom: none;
+  padding: 1.75rem 0;
 }
 
 .stats-bar-grid {
@@ -184,7 +243,7 @@ select.form-control {
 
 .stat-item {
   padding: 0.75rem;
-  border-right: 1px solid rgba(201,168,76,0.1);
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
 
 .stat-item:last-child {
@@ -193,19 +252,21 @@ select.form-control {
 
 .stat-item .stat-num {
   display: block;
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--gold-light);
-  line-height: 1.2;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 600;
+  color: #ffffff !important;
+  line-height: 1.1;
 }
 
 .stat-item .stat-lbl {
   display: block;
-  font-size: 0.82rem;
-  color: var(--gray);
-  margin-top: 0.25rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: 0.03em;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75) !important;
+  margin-top: 0.3rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -217,14 +278,14 @@ select.form-control {
   top: 1rem;
   left: 1rem;
   right: auto;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: var(--navy);
-  font-size: 0.72rem;
+  background: linear-gradient(135deg, #484EA3, #6068b8);
+  color: #ffffff;
+  font-size: 0.7rem;
   font-weight: 700;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  padding: 0.3rem 0.8rem;
+  font-family: 'Raleway', sans-serif;
+  padding: 0.3rem 0.9rem;
   border-radius: 50px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   z-index: 2;
 }
@@ -237,8 +298,8 @@ select.form-control {
    WHY INVEST SECTION
    ============================================ */
 .invest-card {
-  background: var(--navy-light);
-  border: 1px solid rgba(201,168,76,0.15);
+  background: #ffffff;
+  border: 1px solid rgba(145,203,197,0.3);
   border-radius: var(--radius-lg);
   padding: 2rem 1.75rem;
   text-align: center;
@@ -246,9 +307,9 @@ select.form-control {
 }
 
 .invest-card:hover {
-  border-color: rgba(201,168,76,0.4);
+  border-color: rgba(72,78,163,0.35);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 12px 32px rgba(72,78,163,0.12);
 }
 
 .invest-card-icon {
@@ -257,14 +318,30 @@ select.form-control {
 }
 
 .invest-card h3 {
-  color: var(--gold-light);
+  color: #484EA3 !important;
   margin-bottom: 0.75rem;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .invest-card p {
   font-size: 0.92rem;
   margin: 0;
+  color: #555 !important;
+}
+
+/* Extra trust cards */
+.card {
+  border: 1px solid rgba(145,203,197,0.25) !important;
+}
+
+.card:hover {
+  border-color: rgba(72,78,163,0.3) !important;
+  box-shadow: 0 8px 24px rgba(72,78,163,0.1) !important;
+}
+
+.card h4 {
+  color: #484EA3 !important;
 }
 
 /* ============================================
@@ -277,22 +354,23 @@ select.form-control {
   text-align: center;
   gap: 0.75rem;
   padding: 1.5rem 1rem;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(201,168,76,0.08);
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(145,203,197,0.25);
   border-radius: var(--radius);
   transition: var(--transition);
 }
 
 .amenity-item:hover {
-  background: rgba(201,168,76,0.06);
-  border-color: rgba(201,168,76,0.2);
+  background: rgba(72,78,163,0.06);
+  border-color: rgba(72,78,163,0.2);
+  transform: translateY(-2px);
 }
 
 .amenity-icon {
   font-size: 2rem;
   width: 60px;
   height: 60px;
-  background: rgba(201,168,76,0.1);
+  background: rgba(145,203,197,0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -302,16 +380,32 @@ select.form-control {
 .amenity-item span {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-body);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1a1a1a !important;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.02em;
 }
 
 /* ============================================
-   FOOTER (English 3-column)
+   TESTIMONIALS
+   ============================================ */
+.testimonial-card {
+  border: 1px solid rgba(145,203,197,0.2) !important;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(72,78,163,0.25) !important;
+}
+
+.testimonial-stars {
+  color: #C35031 !important;
+}
+
+/* ============================================
+   FOOTER
    ============================================ */
 .footer-en {
-  background: #060e1c;
-  border-top: 1px solid rgba(201,168,76,0.15);
+  background: #1e2254 !important;
+  border-top: 3px solid #C35031;
   padding: 3.5rem 0 1.5rem;
 }
 
@@ -323,20 +417,21 @@ select.form-control {
 }
 
 .footer-col h4 {
-  font-family: 'DM Serif Display', serif;
-  color: var(--gold-light);
-  font-size: 1rem;
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif !important;
+  color: #91CBC5 !important;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: 1.25rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .footer-col p {
   font-size: 0.88rem;
-  color: var(--gray);
-  line-height: 1.7;
+  color: rgba(255,255,255,0.65) !important;
+  line-height: 1.8;
   margin: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer-col ul {
@@ -347,14 +442,14 @@ select.form-control {
 }
 
 .footer-col ul a {
-  color: var(--gray);
+  color: rgba(255,255,255,0.6) !important;
   font-size: 0.88rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   transition: color 0.2s;
 }
 
 .footer-col ul a:hover {
-  color: var(--gold-light);
+  color: #91CBC5 !important;
 }
 
 .footer-social {
@@ -367,20 +462,19 @@ select.form-control {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(145,203,197,0.12);
+  border: 1px solid rgba(145,203,197,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  color: var(--gold);
+  color: #91CBC5 !important;
   text-decoration: none;
   transition: var(--transition);
 }
 
 .footer-social a:hover {
-  background: rgba(201,168,76,0.2);
-  color: var(--gold-light);
+  background: rgba(145,203,197,0.25);
   transform: translateY(-2px);
 }
 
@@ -389,35 +483,36 @@ select.form-control {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.88rem;
-  color: var(--gray);
+  color: rgba(255,255,255,0.6) !important;
   margin-bottom: 0.6rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer-contact-item span:first-child {
   font-size: 1rem;
   flex-shrink: 0;
+  color: #91CBC5 !important;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255,255,255,0.06);
   padding-top: 1.5rem;
   text-align: center;
 }
 
 .footer-disclaimer {
   font-size: 0.75rem;
-  color: var(--gray);
+  color: rgba(255,255,255,0.4) !important;
   max-width: 700px;
   margin: 0 auto 0.75rem;
   line-height: 1.6;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .footer-copy {
   font-size: 0.78rem;
-  color: rgba(154,154,154,0.6);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: rgba(255,255,255,0.3) !important;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* ============================================
@@ -427,14 +522,14 @@ select.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(220,60,60,0.1);
-  border: 1px solid rgba(220,60,60,0.3);
+  background: rgba(195,80,49,0.15);
+  border: 1px solid rgba(195,80,49,0.4);
   border-radius: 50px;
   padding: 0.45rem 1.1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #ff8080;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f4a088 !important;
+  font-family: 'Raleway', sans-serif;
   margin-bottom: 1.25rem;
 }
 
@@ -442,25 +537,34 @@ select.form-control {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ff4444;
+  background: #C35031;
   animation: pulse-red 1.5s infinite;
   flex-shrink: 0;
+}
+
+/* ============================================
+   SECTION TITLE + HEADINGS
+   ============================================ */
+.section-title h2 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: #1a1a1a !important;
+  letter-spacing: -0.01em;
+}
+
+.section-title p {
+  font-family: 'Raleway', sans-serif;
+  color: #555 !important;
 }
 
 /* ============================================
    MOBILE RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-  /* Navbar */
-  .navbar-links {
-    display: none;
-  }
+  .navbar-links { display: none; }
+  .navbar-toggle { display: flex; }
 
-  .navbar-toggle {
-    display: flex;
-  }
-
-  /* Hero search */
   .hero-search-bar {
     border-radius: 16px;
     padding: 1rem;
@@ -470,42 +574,26 @@ select.form-control {
 
   .hero-search-bar select {
     width: 100%;
-    border: 1px solid rgba(201,168,76,0.2);
+    border: 1px solid rgba(145,203,197,0.3);
     border-radius: 8px;
     padding: 0.6rem 0.75rem;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.08);
   }
 
-  .hero-search-divider {
-    display: none;
-  }
+  .hero-search-divider { display: none; }
+  .hero-search-btn { width: 100%; text-align: center; }
 
-  .hero-search-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Stats bar */
-  .stats-bar-grid {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
+  .stats-bar-grid { grid-template-columns: 1fr; gap: 0.25rem; }
 
   .stat-item {
     border-right: none;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 1rem;
   }
 
-  .stat-item:last-child {
-    border-bottom: none;
-  }
+  .stat-item:last-child { border-bottom: none; }
 
-  /* Footer */
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -513,19 +601,12 @@ select.form-control {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
-
-  .footer-grid .footer-col:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .stats-bar-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .footer-grid .footer-col:first-child { grid-column: 1 / -1; }
+  .stats-bar-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ============================================
    RTL OVERRIDES — Arabic Language Mode
-   يتفعل لما html dir="rtl"
    ============================================ */
 [dir=rtl] body {
   font-family: 'Cairo', sans-serif !important;
@@ -541,181 +622,52 @@ select.form-control {
   font-weight: 700;
 }
 
-[dir=rtl] .btn {
-  font-family: 'Cairo', sans-serif;
-}
+[dir=rtl] .btn { font-family: 'Cairo', sans-serif; }
 
-/* Navbar RTL */
-[dir=rtl] .navbar-links {
-  flex-direction: row-reverse;
-}
+[dir=rtl] .navbar-links { flex-direction: row-reverse; }
+[dir=rtl] .navbar-links.open { text-align: right; }
+[dir=rtl] .hero-content { text-align: center; }
+[dir=rtl] .hero-search-bar { flex-direction: row-reverse; }
+[dir=rtl] .hero-search-bar select { font-family: 'Cairo', sans-serif; text-align: right; }
+[dir=rtl] .hero-scarcity { font-family: 'Cairo', sans-serif; flex-direction: row-reverse; }
 
-[dir=rtl] .navbar-links.open {
-  text-align: right;
-}
+[dir=rtl] .stat-item { border-right: none; border-left: 1px solid rgba(255,255,255,0.15); }
+[dir=rtl] .stat-item:last-child { border-left: none; }
+[dir=rtl] .stat-item .stat-num { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .stat-item .stat-lbl { font-family: 'Cairo', sans-serif; text-transform: none; letter-spacing: 0; }
 
-/* Hero RTL */
-[dir=rtl] .hero-content {
-  text-align: center;
-}
+[dir=rtl] .unit-card-badge { left: auto; right: 1rem; }
+[dir=rtl] .unit-card-body { text-align: right; }
+[dir=rtl] .unit-specs { justify-content: flex-end; }
 
-[dir=rtl] .hero-search-bar {
-  flex-direction: row-reverse;
-}
+[dir=rtl] .invest-card { text-align: center; }
+[dir=rtl] .invest-card p { font-family: 'Cairo', sans-serif; }
 
-[dir=rtl] .hero-search-bar select {
-  font-family: 'Cairo', sans-serif;
-  text-align: right;
-}
+[dir=rtl] .form-control { direction: rtl; text-align: right; font-family: 'Cairo', sans-serif; }
+[dir=rtl] select.form-control { background-position: left 1rem center; padding-right: 1.1rem; padding-left: 2.5rem; }
+[dir=rtl] .form-label { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .lead-form-wrap { text-align: right; }
 
-[dir=rtl] .hero-scarcity {
-  font-family: 'Cairo', sans-serif;
-  flex-direction: row-reverse;
-}
+[dir=rtl] .testimonial-card { text-align: right; }
+[dir=rtl] .testimonial-card::before { right: 1.5rem; left: auto; }
 
-/* Stats bar RTL */
-[dir=rtl] .stat-item {
-  border-right: none;
-  border-left: 1px solid rgba(201,168,76,0.1);
-}
-
-[dir=rtl] .stat-item:last-child {
-  border-left: none;
-}
-
-[dir=rtl] .stat-item .stat-num {
-  font-family: 'Cairo', sans-serif;
-}
-
-[dir=rtl] .stat-item .stat-lbl {
-  font-family: 'Cairo', sans-serif;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-/* Unit cards RTL */
-[dir=rtl] .unit-card-badge {
-  left: auto;
-  right: 1rem;
-}
-
-[dir=rtl] .unit-card-body {
-  text-align: right;
-}
-
-[dir=rtl] .unit-specs {
-  justify-content: flex-end;
-}
-
-/* Invest cards RTL */
-[dir=rtl] .invest-card {
-  text-align: center;
-}
-
-[dir=rtl] .invest-card p {
-  font-family: 'Cairo', sans-serif;
-}
-
-/* Form RTL */
-[dir=rtl] .form-control {
-  direction: rtl;
-  text-align: right;
-  font-family: 'Cairo', sans-serif;
-}
-
-[dir=rtl] select.form-control {
-  background-position: left 1rem center;
-  padding-right: 1.1rem;
-  padding-left: 2.5rem;
-}
-
-[dir=rtl] .form-label {
-  font-family: 'Cairo', sans-serif;
-}
-
-[dir=rtl] .lead-form-wrap {
-  text-align: right;
-}
-
-/* Testimonials RTL */
-[dir=rtl] .testimonial-card {
-  text-align: right;
-}
-
-[dir=rtl] .testimonial-card::before {
-  right: 1.5rem;
-  left: auto;
-}
-
-/* Footer RTL */
-[dir=rtl] .footer-grid {
-  direction: rtl;
-}
-
-[dir=rtl] .footer-col {
-  text-align: right;
-}
-
-[dir=rtl] .footer-col ul {
-  text-align: right;
-}
-
-[dir=rtl] .footer-col h4 {
-  font-family: 'Cairo', sans-serif;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
+[dir=rtl] .footer-grid { direction: rtl; }
+[dir=rtl] .footer-col { text-align: right; }
+[dir=rtl] .footer-col ul { text-align: right; }
+[dir=rtl] .footer-col h4 { font-family: 'Cairo', sans-serif !important; text-transform: none; letter-spacing: 0; }
 [dir=rtl] .footer-col p,
 [dir=rtl] .footer-col a,
-[dir=rtl] .footer-col ul li {
-  font-family: 'Cairo', sans-serif;
-}
-
-[dir=rtl] .footer-social {
-  justify-content: flex-end;
-}
-
-[dir=rtl] .footer-contact-item {
-  flex-direction: row-reverse;
-  font-family: 'Cairo', sans-serif;
-}
-
+[dir=rtl] .footer-col ul li { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .footer-social { justify-content: flex-end; }
+[dir=rtl] .footer-contact-item { flex-direction: row-reverse; font-family: 'Cairo', sans-serif; }
 [dir=rtl] .footer-disclaimer,
-[dir=rtl] .footer-copy {
-  font-family: 'Cairo', sans-serif;
-  text-align: center;
-}
+[dir=rtl] .footer-copy { font-family: 'Cairo', sans-serif; text-align: center; }
 
-/* Section titles RTL */
-[dir=rtl] .section-title {
-  text-align: center;
-}
-
-[dir=rtl] .section-title p {
-  font-family: 'Cairo', sans-serif;
-}
-
-/* Amenity labels RTL */
-[dir=rtl] .amenity-item span {
-  font-family: 'Cairo', sans-serif;
-}
-
-/* Card descriptions RTL */
+[dir=rtl] .section-title { text-align: center; }
+[dir=rtl] .section-title p { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .amenity-item span { font-family: 'Cairo', sans-serif; }
 [dir=rtl] .card p,
-[dir=rtl] .card h4 {
-  font-family: 'Cairo', sans-serif;
-}
-
-[dir=rtl] .card {
-  text-align: center;
-}
-
-/* Lead form wrap RTL */
-[dir=rtl] .lead-form-wrap h3 {
-  font-family: 'Cairo', sans-serif !important;
-}
-
-[dir=rtl] .lead-form-wrap p {
-  font-family: 'Cairo', sans-serif;
-}
+[dir=rtl] .card h4 { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .card { text-align: center; }
+[dir=rtl] .lead-form-wrap h3 { font-family: 'Cairo', sans-serif !important; }
+[dir=rtl] .lead-form-wrap p { font-family: 'Cairo', sans-serif; }

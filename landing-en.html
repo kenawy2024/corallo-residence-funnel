@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/base.css">
@@ -22,102 +22,81 @@
 
   <!-- Critical inline CSS for LCP -->
   <style>
-    body { background: #EEEAE2; direction: ltr; text-align: left; }
+    body { background: #EEEBE5; direction: ltr; text-align: left; font-family: 'Raleway', sans-serif; }
     .hero { min-height: 100vh; display: flex; align-items: center; }
     .navbar { position: fixed; top: 0; right: 0; left: 0; z-index: 900; padding: 1rem 0; }
   </style>
 
-  <!-- ===== LIGHT THEME OVERRIDE ===== -->
+  <!-- ===== BRAND THEME — Corallo Brand Kit ===== -->
   <style>
+    /* ── Core brand variables ── */
     :root {
-      --navy: #EEEAE2;
-      --navy-light: #E5E1D9;
-      --navy-mid: #E8E4DC;
-      --text-body: #1a1a1a;
+      --brand-primary:   #484EA3;
+      --brand-secondary: #91CBC5;
+      --brand-accent:    #C35031;
+      --brand-bg:        #EEEBE5;
+      --brand-bg-mid:    #E8E4DC;
+      --brand-bg-light:  #F2EFE9;
+      --navy:            #EEEBE5;
+      --navy-light:      #E8E4DC;
+      --navy-mid:        #E8E4DC;
+      --text-body:       #2a2a2a;
     }
-    body { background-color: #EEEAE2 !important; color: #1a1a1a !important; }
-    h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; }
-    p, span, li, label { color: #1a1a1a !important; }
-    .hero-section { background: #EEEAE2 !important; }
-    .bg-navy-mid { background-color: #E8E4DC !important; }
-    .bg-navy-light { background-color: #E5E1D9 !important; }
-    .bg-dots { background-color: #EEEAE2 !important; }
-    .navbar { background-color: #1a1a1a !important; }
-    .stat-card, .property-card, .invest-card, .testimonial-card { background: #fff !important; }
-    a { color: var(--gold-dark) !important; }
-    .section-subtitle { color: #555 !important; }
-    .disclaimer, .footer-text { color: #555 !important; }
+
+    /* ── Base ── */
+    body { background-color: #EEEBE5 !important; color: #2a2a2a !important;
+           font-family: 'Raleway', sans-serif !important; }
+    h1, h2, h3, h4, h5, h6 { color: #1a1a1a !important; font-family: 'Cormorant Garamond', serif !important; }
+    p, li, label { color: #444 !important; }
+    a { color: #484EA3 !important; }
+
+    /* ── Backgrounds ── */
+    .hero-section, .bg-dots { background: #EEEBE5 !important; }
+    .bg-navy-mid  { background-color: #E8E4DC !important; }
+    .bg-navy-light{ background-color: #EEF7F6 !important; }
+    .section      { background-color: #EEEBE5 !important; }
+    .section.bg-navy-mid   { background-color: #E8E4DC !important; }
+    .section.bg-navy-light { background-color: #EEF7F6 !important; }
+    .section.bg-dots       { background-color: #EEEBE5 !important; }
+
+    /* ── Navbar ── */
+    .navbar { background-color: #484EA3 !important; }
+    .navbar-links a { color: rgba(255,255,255,0.9) !important; }
+
+    /* ── Hero ── */
+    .hero-bg { background: none !important; }
+    .hero-title   { color: #ffffff !important; font-family: 'Cormorant Garamond', serif !important;
+                    font-size: clamp(2.6rem, 6vw, 4.2rem) !important; font-weight: 600 !important; }
+    .hero-subtitle{ color: rgba(255,255,255,0.88) !important; font-family: 'Raleway', sans-serif !important; }
+    .hero-scarcity{ color: #f4a088 !important; }
+    .badge-gold   { background: rgba(145,203,197,0.25) !important; border: 1px solid rgba(145,203,197,0.5) !important;
+                    color: #ffffff !important; }
+
+    /* ── Cards / Components ── */
+    .stat-card, .property-card, .invest-card, .testimonial-card,
+    .unit-card, .card, .amenity-item, .lead-form-wrap {
+      background: #ffffff !important;
+    }
+    .unit-card p, .invest-card p, .card p, .testimonial-card p { color: #555 !important; }
+
+    /* ── Forms ── */
     .form-group input, .form-group select {
-      background: #fff !important;
-      color: #1a1a1a !important;
-      border-color: #ccc !important;
+      background: #fff !important; color: #1a1a1a !important; border-color: #ddd !important;
     }
+
+    /* ── Icons ── */
     .fi { font-size: 1.4em; }
-    /* Hero bg override */
-    .hero-bg { background: #EEEAE2 !important; }
-    section { background-color: inherit; }
-    /* Footer dark */
-    .footer-en { background-color: #1a1a1a !important; }
-    .footer-en p, .footer-en span, .footer-en li, .footer-en a { color: #e0e0e0 !important; }
-    .footer-en h4 { color: #ffffff !important; }
-    .footer-disclaimer, .footer-copy { color: #999 !important; }
-    /* Navbar links */
-    .navbar-links a { color: #ffffff !important; }
-    /* Stats bar */
-    .stats-bar { background-color: #E0DCD4 !important; }
-    .stat-num { color: #1a1a1a !important; }
-    .stat-lbl { color: #555 !important; }
-    /* Cards */
-    .unit-card, .invest-card, .card, .testimonial-card, .amenity-item, .lead-form-wrap {
-      background: #fff !important;
-      color: #1a1a1a !important;
-    }
-    .unit-card p, .invest-card p, .card p, .testimonial-card p { color: #444 !important; }
-    /* Hero text */
-    .hero-title { color: #ffffff !important; }
-    .hero .text-gradient {
-      background: none !important;
-      -webkit-text-fill-color: #ffffff !important;
-      color: #ffffff !important;
-    }
-    .hero-subtitle { color: #ffffff !important; }
-    /* Hero badge & scarcity — force white text */
-    .badge-gold { color: #ffffff !important; }
-    .hero-scarcity { color: #ffffff !important; }
-    /* Search bar */
-    .hero-search-bar { background: #fff !important; }
-    .hero-search-bar select { color: #1a1a1a !important; background: transparent !important; }
-    /* Section bg override */
-    .section { background-color: #EEEAE2 !important; }
-    .section.bg-navy-mid { background-color: #E8E4DC !important; }
-    .section.bg-navy-light { background-color: #E5E1D9 !important; }
-    .section.bg-dots { background-color: #EEEAE2 !important; }
-    /* Hand-drawn SVG icon images */
-    .icon-hd {
-      width: 1.4em;
-      height: 1.4em;
-      vertical-align: middle;
-      display: inline-block;
-    }
-    .amenity-icon .icon-hd,
-    .invest-card-icon .icon-hd {
-      width: 2rem;
-      height: 2rem;
-    }
-    .unit-card-img .icon-hd {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-    .footer-social a img {
-      filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);
-      opacity: 0.85;
-    }
+    .icon-hd { width: 1.4em; height: 1.4em; vertical-align: middle; display: inline-block; }
+    .amenity-icon .icon-hd, .invest-card-icon .icon-hd { width: 2rem; height: 2rem; }
+    .unit-card-img .icon-hd { width: 2.5rem; height: 2.5rem; }
+    .footer-social a img { filter: brightness(0) invert(1); opacity: 0.75; }
+
     /* ── Language Switcher ── */
     #lang-switcher { display: flex; gap: 4px; align-items: center; }
     .lang-btn {
       background: transparent;
-      color: rgba(255,255,255,0.65);
-      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 6px;
       padding: 5px 10px;
       font-size: 11px;
@@ -126,11 +105,11 @@
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s, color 0.2s;
       line-height: 1;
-      font-family: inherit;
+      font-family: 'Raleway', sans-serif;
     }
     .lang-btn:hover, .lang-btn.active {
-      background: #c9a84c;
-      border-color: #c9a84c;
+      background: #C35031;
+      border-color: #C35031;
       color: #fff;
     }
   </style>
@@ -174,12 +153,14 @@
 </nav>
 
 <!-- ========== HERO ========== -->
-<section class="hero" id="hero">
-  <div class="hero-bg" style="background-image: linear-gradient(135deg, #EEEAE2 0%, #E8E4DC 50%, #EEEAE2 100%);"></div>
+<section class="hero" id="hero" style="background: linear-gradient(155deg, #484EA3 0%, #3a3f8f 35%, #2d3282 65%, #1e2254 100%); position:relative;">
+  <!-- Place hero-shell.jpg in project root and uncomment for photo bg:
+  <div style="position:absolute;inset:0;background:url('hero-shell.jpg') center/cover no-repeat;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(155deg,rgba(72,78,163,0.88) 0%,rgba(30,34,84,0.75) 100%);"></div> -->
   <div class="hero-overlay"></div>
 
   <!-- Decorative dots -->
-  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,76,0.07) 1px, transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(145,203,197,0.12) 1px, transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
 
   <div class="container" style="width:100%;">
     <div class="hero-content">
@@ -187,7 +168,7 @@
         <span class="badge badge-gold"><i class="fi fi-hd-diamond"></i> <span data-cms="landing_en.hero_badge" data-i18n="hero_badge">Port Ghalib, Red Sea, Egypt</span></span>
       </div>
 
-      <h1 class="hero-title fade-up" style="font-family:'DM Serif Display',serif;font-weight:400;" data-cms-html="landing_en.hero_title" data-i18n-html="hero_title">
+      <h1 class="hero-title fade-up" style="font-family:'Cormorant Garamond',serif;font-weight:400;" data-cms-html="landing_en.hero_title" data-i18n-html="hero_title">
         Own a Luxury Chalet<br>
         <span class="text-gradient">on the Red Sea</span>
       </h1>
