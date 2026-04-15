@@ -99,7 +99,18 @@
       footer_contact_airport: '5 min from Marsa Alam Airport (RMF)',
       footer_contact_email: 'info@coralloresidence-portgahlip.com',
       footer_disclaimer: '* All prices shown in EUR are indicative and subject to exchange rate fluctuations. ROI figures are based on historical performance and market projections — actual returns may vary. This page is for informational purposes only and does not constitute financial advice. Corallo Residence is a registered development in Port Ghalib, Marsa Alam, Egypt.',
-      footer_copy: '© 2026 Corallo Residence. All rights reserved.'
+      footer_copy: '© 2026 Corallo Residence. All rights reserved.',
+
+      contact_title: 'Get A Call Back',
+      contact_subtitle: 'Fill the form below to receive a call from our team to answer all your questions about Corallo Residence, available units and payment plans.',
+      contact_ph_name: 'Name',
+      contact_ph_email: 'Email',
+      contact_ph_phone: 'Mobile',
+      contact_opt_studio: 'Studio',
+      contact_opt_1br: '1 Bedroom',
+      contact_opt_2br: '2 Bedrooms',
+      contact_opt_pent: 'Penthouse',
+      contact_btn: 'Send'
     },
 
     // ─────────────────────────── ARABIC ───────────────────────────
@@ -191,7 +202,18 @@
       footer_contact_airport: '5 دقائق من مطار مرسى علم (RMF)',
       footer_contact_email: 'info@coralloresidence-portgahlip.com',
       footer_disclaimer: '* جميع الأسعار المعروضة بالأورو تقريبية وتخضع لتقلبات سعر الصرف. أرقام العائد مبنية على الأداء التاريخي والتوقعات السوقية — قد تختلف العوائد الفعلية. هذه الصفحة لأغراض معلوماتية فقط ولا تمثل نصيحة مالية. كورالو ريزيدنس مشروع مسجل في بورت غالب، مرسى علم، مصر.',
-      footer_copy: '© 2026 كورالو ريزيدنس. جميع الحقوق محفوظة.'
+      footer_copy: '© 2026 كورالو ريزيدنس. جميع الحقوق محفوظة.',
+
+      contact_title: 'احصل على مكالمة',
+      contact_subtitle: 'املأ النموذج وسيتواصل معك فريقنا للإجابة على جميع أسئلتك عن كورالو ريزيدنس والوحدات المتاحة وخطط السداد.',
+      contact_ph_name: 'الاسم',
+      contact_ph_email: 'البريد الإلكتروني',
+      contact_ph_phone: 'رقم الهاتف',
+      contact_opt_studio: 'استوديو',
+      contact_opt_1br: 'غرفة نوم واحدة',
+      contact_opt_2br: 'غرفتان نوم',
+      contact_opt_pent: 'بنتهاوس',
+      contact_btn: 'إرسال'
     },
 
     // ─────────────────────────── ITALIAN ───────────────────────────
@@ -283,7 +305,18 @@
       footer_contact_airport: '5 min dall\'Aeroporto di Marsa Alam (RMF)',
       footer_contact_email: 'info@coralloresidence-portgahlip.com',
       footer_disclaimer: '* Tutti i prezzi in EUR sono indicativi e soggetti a fluttuazioni del tasso di cambio. Le cifre ROI si basano su performance storiche e proiezioni di mercato — i rendimenti effettivi possono variare. Questa pagina è solo a scopo informativo e non costituisce consulenza finanziaria. Corallo Residence è uno sviluppo registrato a Port Ghalib, Marsa Alam, Egitto.',
-      footer_copy: '© 2026 Corallo Residence. Tutti i diritti riservati.'
+      footer_copy: '© 2026 Corallo Residence. Tutti i diritti riservati.',
+
+      contact_title: 'Richiedi una Chiamata',
+      contact_subtitle: 'Compila il modulo sottostante e il nostro team ti ricontatterà per rispondere a tutte le tue domande su Corallo Residence, le unità disponibili e i piani di pagamento.',
+      contact_ph_name: 'Nome',
+      contact_ph_email: 'Email',
+      contact_ph_phone: 'Telefono',
+      contact_opt_studio: 'Monolocale',
+      contact_opt_1br: '1 Camera da Letto',
+      contact_opt_2br: '2 Camere da Letto',
+      contact_opt_pent: 'Attico',
+      contact_btn: 'Invia'
     }
 
   }; // end T
@@ -346,6 +379,12 @@
       if (t[key] != null) el.innerHTML = t[key];
     });
 
+    // ── Placeholder text ──
+    [].forEach.call(document.querySelectorAll('[data-i18n-placeholder]'), function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] != null) el.placeholder = t[key];
+    });
+
     // ── Select option text ──
     updateSelectOptions(t);
 
@@ -367,7 +406,8 @@
     var maps = {
       'search-type':  [null, 'search_type_studio', 'search_type_1bed', 'search_type_2bed', 'search_type_penthouse'],
       'search-beds':  [null, 'search_beds_studio', 'search_beds_1', 'search_beds_2', 'search_beds_3'],
-      'search-price': [null, 'search_price_1', 'search_price_2', 'search_price_3', 'search_price_4']
+      'search-price': [null, 'search_price_1', 'search_price_2', 'search_price_3', 'search_price_4'],
+      'cf-unit':      ['contact_opt_studio', 'contact_opt_1br', 'contact_opt_2br', 'contact_opt_pent']
     };
     var placeholders = { 'search-type': 'hero_search_type', 'search-beds': 'hero_search_beds', 'search-price': 'hero_search_price' };
 
@@ -375,12 +415,15 @@
       var sel = document.getElementById(id);
       if (!sel) return;
       var keys = maps[id];
+      var hasPlaceholder = !!placeholders[id];
       [].forEach.call(sel.querySelectorAll('option'), function (opt, i) {
-        if (i === 0) {
+        if (hasPlaceholder && i === 0) {
           var phKey = placeholders[id];
           if (t[phKey] != null) opt.textContent = t[phKey];
-        } else if (keys[i] && t[keys[i]] != null) {
-          opt.textContent = t[keys[i]];
+        } else {
+          var keyIdx = hasPlaceholder ? i : i;
+          var k = keys[keyIdx];
+          if (k && t[k] != null) opt.textContent = t[k];
         }
       });
     });
