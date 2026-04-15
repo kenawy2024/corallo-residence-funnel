@@ -336,6 +336,9 @@
       } else {
         applyData(data, null);
       }
+
+      // Notify i18n engine that CMS data has been applied
+      document.dispatchEvent(new CustomEvent('cms:ready'));
     })
     .catch(function (e) {
       console.warn('[CMS] Failed to load content.json:', e);

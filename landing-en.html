@@ -112,6 +112,27 @@
       filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);
       opacity: 0.85;
     }
+    /* ── Language Switcher ── */
+    #lang-switcher { display: flex; gap: 4px; align-items: center; }
+    .lang-btn {
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      line-height: 1;
+      font-family: inherit;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: #c9a84c;
+      border-color: #c9a84c;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -128,13 +149,19 @@
 
       <!-- Desktop nav links -->
       <ul class="navbar-links" id="navbar-links">
-        <li><a href="#hero" data-cms="landing_en.nav_home">Home</a></li>
-        <li><a href="#units" data-cms="landing_en.nav_units">Properties</a></li>
-        <li><a href="#invest" data-cms="landing_en.nav_invest">Invest</a></li>
-        <li><a href="#contact" data-cms="landing_en.nav_contact">Contact</a></li>
+        <li><a href="#hero" data-cms="landing_en.nav_home" data-i18n="nav_home">Home</a></li>
+        <li><a href="#units" data-cms="landing_en.nav_units" data-i18n="nav_units">Properties</a></li>
+        <li><a href="#invest" data-cms="landing_en.nav_invest" data-i18n="nav_invest">Invest</a></li>
+        <li><a href="#contact" data-cms="landing_en.nav_contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
 
       <div style="display:flex;align-items:center;gap:1rem;">
+        <!-- Language Switcher -->
+        <div id="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ar">AR</button>
+          <button class="lang-btn" data-lang="it">IT</button>
+        </div>
         <!-- Hamburger -->
         <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
           <span></span>
@@ -157,15 +184,15 @@
   <div class="container" style="width:100%;">
     <div class="hero-content">
       <div class="hero-badge fade-up">
-        <span class="badge badge-gold"><i class="fi fi-hd-diamond"></i> <span data-cms="landing_en.hero_badge">Port Ghalib, Red Sea, Egypt</span></span>
+        <span class="badge badge-gold"><i class="fi fi-hd-diamond"></i> <span data-cms="landing_en.hero_badge" data-i18n="hero_badge">Port Ghalib, Red Sea, Egypt</span></span>
       </div>
 
-      <h1 class="hero-title fade-up" style="font-family:'DM Serif Display',serif;font-weight:400;" data-cms-html="landing_en.hero_title">
+      <h1 class="hero-title fade-up" style="font-family:'DM Serif Display',serif;font-weight:400;" data-cms-html="landing_en.hero_title" data-i18n-html="hero_title">
         Own a Luxury Chalet<br>
         <span class="text-gradient">on the Red Sea</span>
       </h1>
 
-      <p class="hero-subtitle fade-up" data-cms="landing_en.hero_subtitle">
+      <p class="hero-subtitle fade-up" data-cms="landing_en.hero_subtitle" data-i18n="hero_subtitle">
         Where the desert meets turquoise waters — Corallo Residence offers you a rare blend of
         luxury living and exceptional investment returns at one of Egypt's most exclusive resorts.
       </p>
@@ -173,36 +200,36 @@
       <!-- Hero Search Bar -->
       <div class="hero-search-bar fade-up" id="hero-search">
         <select id="search-type" aria-label="Unit Type">
-          <option value="" disabled selected data-cms="landing_en.hero_search_type">Unit Type</option>
-          <option value="studio">Studio</option>
-          <option value="1bed">1 Bedroom</option>
-          <option value="2bed">2 Bedrooms</option>
-          <option value="penthouse">Penthouse</option>
+          <option value="" disabled selected data-cms="landing_en.hero_search_type" data-i18n="hero_search_type">Unit Type</option>
+          <option value="studio" data-i18n="search_type_studio">Studio</option>
+          <option value="1bed" data-i18n="search_type_1bed">1 Bedroom</option>
+          <option value="2bed" data-i18n="search_type_2bed">2 Bedrooms</option>
+          <option value="penthouse" data-i18n="search_type_penthouse">Penthouse</option>
         </select>
         <div class="hero-search-divider"></div>
         <select id="search-beds" aria-label="Bedrooms">
-          <option value="" disabled selected data-cms="landing_en.hero_search_beds">Bedrooms</option>
-          <option value="0">Studio</option>
-          <option value="1">1 Bed</option>
-          <option value="2">2 Beds</option>
-          <option value="3">3+ Beds</option>
+          <option value="" disabled selected data-cms="landing_en.hero_search_beds" data-i18n="hero_search_beds">Bedrooms</option>
+          <option value="0" data-i18n="search_beds_studio">Studio</option>
+          <option value="1" data-i18n="search_beds_1">1 Bed</option>
+          <option value="2" data-i18n="search_beds_2">2 Beds</option>
+          <option value="3" data-i18n="search_beds_3">3+ Beds</option>
         </select>
         <div class="hero-search-divider"></div>
         <select id="search-price" aria-label="Price Range">
-          <option value="" disabled selected data-cms="landing_en.hero_search_price">Price Range</option>
-          <option value="30-55">€30K – €55K</option>
-          <option value="55-100">€55K – €100K</option>
-          <option value="100-170">€100K – €170K</option>
-          <option value="170+">€170K+</option>
+          <option value="" disabled selected data-cms="landing_en.hero_search_price" data-i18n="hero_search_price">Price Range</option>
+          <option value="30-55" data-i18n="search_price_1">€30K – €55K</option>
+          <option value="55-100" data-i18n="search_price_2">€55K – €100K</option>
+          <option value="100-170" data-i18n="search_price_3">€100K – €170K</option>
+          <option value="170+" data-i18n="search_price_4">€170K+</option>
         </select>
-        <button class="hero-search-btn" id="hero-search-btn" data-cms="landing_en.hero_search_btn">View Properties →</button>
+        <button class="hero-search-btn" id="hero-search-btn" data-cms="landing_en.hero_search_btn" data-i18n="hero_search_btn">View Properties →</button>
       </div>
 
       <!-- Scarcity -->
       <div class="fade-up" style="text-align:center;margin-bottom:1.5rem;">
         <span class="hero-scarcity">
           <span class="dot"></span>
-          <span data-cms="landing_en.hero_scarcity">Only 7 units remain at launch pricing</span>
+          <span data-cms="landing_en.hero_scarcity" data-i18n="hero_scarcity">Only 7 units remain at launch pricing</span>
         </span>
       </div>
 
@@ -215,16 +242,16 @@
   <div class="container">
     <div class="stats-bar-grid">
       <div class="stat-item fade-up">
-        <span class="stat-num" data-cms="landing_en.stat_roi">15–22%</span>
-        <span class="stat-lbl" data-cms="landing_en.stat_roi_lbl">Annual Rental ROI</span>
+        <span class="stat-num" data-cms="landing_en.stat_roi" data-i18n="stat_roi">15–22%</span>
+        <span class="stat-lbl" data-cms="landing_en.stat_roi_lbl" data-i18n="stat_roi_lbl">Annual Rental ROI</span>
       </div>
       <div class="stat-item fade-up">
-        <span class="stat-num" data-cms="landing_en.stat_occupancy">90%+</span>
-        <span class="stat-lbl" data-cms="landing_en.stat_occupancy_lbl">Occupancy Rate</span>
+        <span class="stat-num" data-cms="landing_en.stat_occupancy" data-i18n="stat_occupancy">90%+</span>
+        <span class="stat-lbl" data-cms="landing_en.stat_occupancy_lbl" data-i18n="stat_occupancy_lbl">Occupancy Rate</span>
       </div>
       <div class="stat-item fade-up">
-        <span class="stat-num" data-cms="landing_en.stat_from">from €30K</span>
-        <span class="stat-lbl" data-cms="landing_en.stat_from_lbl">Entry Price</span>
+        <span class="stat-num" data-cms="landing_en.stat_from" data-i18n="stat_from">from €30K</span>
+        <span class="stat-lbl" data-cms="landing_en.stat_from_lbl" data-i18n="stat_from_lbl">Entry Price</span>
       </div>
     </div>
   </div>
@@ -234,9 +261,9 @@
 <section class="section bg-dots" id="units">
   <div class="container">
     <div class="section-title fade-up">
-      <h2 data-cms="landing_en.section_units_title">Featured Properties</h2>
+      <h2 data-cms="landing_en.section_units_title" data-i18n="section_units_title">Featured Properties</h2>
       <div class="gold-line"></div>
-      <p data-cms="landing_en.section_units_desc">Each unit is fully furnished and professionally managed — ready to generate income from day one.</p>
+      <p data-cms="landing_en.section_units_desc" data-i18n="section_units_desc">Each unit is fully furnished and professionally managed — ready to generate income from day one.</p>
     </div>
 
     <div id="cms-units-en" class="grid-4"></div>
@@ -247,29 +274,29 @@
 <section class="section bg-navy-mid" id="invest">
   <div class="container">
     <div class="section-title fade-up">
-      <h2 data-cms="landing_en.section_invest_title">Why Invest in Port Ghalib?</h2>
+      <h2 data-cms="landing_en.section_invest_title" data-i18n="section_invest_title">Why Invest in Port Ghalib?</h2>
       <div class="gold-line"></div>
-      <p data-cms="landing_en.section_invest_desc">Port Ghalib is Egypt's premier integrated resort destination — 10 km of pristine coastline, the largest private marina on the Red Sea, and world-class infrastructure.</p>
+      <p data-cms="landing_en.section_invest_desc" data-i18n="section_invest_desc">Port Ghalib is Egypt's premier integrated resort destination — 10 km of pristine coastline, the largest private marina on the Red Sea, and world-class infrastructure.</p>
     </div>
 
     <div class="grid-3">
 
       <div class="invest-card fade-up">
         <div class="invest-card-icon"><img src="icons/ship-wheel.png" class="icon-hd" alt="marina"></div>
-        <h3 data-cms="landing_en.invest_marina_title">Private Marina</h3>
-        <p data-cms="landing_en.invest_marina_desc">Berths for over 1,000 vessels — the largest private marina on the Red Sea, attracting international yacht owners and high-net-worth visitors year-round.</p>
+        <h3 data-cms="landing_en.invest_marina_title" data-i18n="invest_marina_title">Private Marina</h3>
+        <p data-cms="landing_en.invest_marina_desc" data-i18n="invest_marina_desc">Berths for over 1,000 vessels — the largest private marina on the Red Sea, attracting international yacht owners and high-net-worth visitors year-round.</p>
       </div>
 
       <div class="invest-card fade-up">
         <div class="invest-card-icon"><img src="icons/roi.png" class="icon-hd" alt="ROI"></div>
-        <h3 data-cms="landing_en.invest_roi_title">15–22% Rental ROI</h3>
-        <p data-cms="landing_en.invest_roi_desc">Egypt's tourism sector is booming. Corallo Residence owners benefit from a fully managed rental programme with guaranteed occupancy support and transparent quarterly reporting.</p>
+        <h3 data-cms="landing_en.invest_roi_title" data-i18n="invest_roi_title">15–22% Rental ROI</h3>
+        <p data-cms="landing_en.invest_roi_desc" data-i18n="invest_roi_desc">Egypt's tourism sector is booming. Corallo Residence owners benefit from a fully managed rental programme with guaranteed occupancy support and transparent quarterly reporting.</p>
       </div>
 
       <div class="invest-card fade-up">
         <div class="invest-card-icon"><img src="icons/location-new.png" class="icon-hd" alt="location"></div>
-        <h3 data-cms="landing_en.invest_location_title">Prime Location</h3>
-        <p data-cms="landing_en.invest_location_desc">Just 5 minutes from Marsa Alam International Airport (RMF) — direct flights from London, Frankfurt, Amsterdam, and across the Gulf. Your guests arrive with ease.</p>
+        <h3 data-cms="landing_en.invest_location_title" data-i18n="invest_location_title">Prime Location</h3>
+        <p data-cms="landing_en.invest_location_desc" data-i18n="invest_location_desc">Just 5 minutes from Marsa Alam International Airport (RMF) — direct flights from London, Frankfurt, Amsterdam, and across the Gulf. Your guests arrive with ease.</p>
       </div>
 
     </div>
@@ -278,13 +305,13 @@
     <div class="grid-2" style="margin-top:2rem;max-width:720px;margin-left:auto;margin-right:auto;">
       <div class="card fade-up" style="text-align:center;">
         <div class="card-icon" style="margin:0 auto 1rem;"><img src="icons/freehold-new.png" class="icon-hd" alt="freehold"></div>
-        <h4 data-cms="landing_en.invest_freehold_title">Freehold Ownership</h4>
-        <p style="font-size:0.88rem;margin:0;" data-cms="landing_en.invest_freehold_desc">Full title deed — foreigners can own 100% freehold property in Egypt's Red Sea zone.</p>
+        <h4 data-cms="landing_en.invest_freehold_title" data-i18n="invest_freehold_title">Freehold Ownership</h4>
+        <p style="font-size:0.88rem;margin:0;" data-cms="landing_en.invest_freehold_desc" data-i18n="invest_freehold_desc">Full title deed — foreigners can own 100% freehold property in Egypt's Red Sea zone.</p>
       </div>
       <div class="card fade-up" style="text-align:center;">
         <div class="card-icon" style="margin:0 auto 1rem;"><img src="icons/managed-new.png" class="icon-hd" alt="key"></div>
-        <h4 data-cms="landing_en.invest_managed_title">Turnkey & Managed</h4>
-        <p style="font-size:0.88rem;margin:0;" data-cms="landing_en.invest_managed_desc">Fully furnished, professionally managed, and rented out for you — completely hands-off investment.</p>
+        <h4 data-cms="landing_en.invest_managed_title" data-i18n="invest_managed_title">Turnkey & Managed</h4>
+        <p style="font-size:0.88rem;margin:0;" data-cms="landing_en.invest_managed_desc" data-i18n="invest_managed_desc">Fully furnished, professionally managed, and rented out for you — completely hands-off investment.</p>
       </div>
     </div>
   </div>
@@ -294,35 +321,35 @@
 <section class="section" id="amenities">
   <div class="container">
     <div class="section-title fade-up">
-      <h2 data-cms="landing_en.section_amenities_title">Resort Amenities</h2>
+      <h2 data-cms="landing_en.section_amenities_title" data-i18n="section_amenities_title">Resort Amenities</h2>
       <div class="gold-line"></div>
-      <p data-cms="landing_en.section_amenities_desc">Corallo Residence is more than a property — it's a world-class resort experience.</p>
+      <p data-cms="landing_en.section_amenities_desc" data-i18n="section_amenities_desc">Corallo Residence is more than a property — it's a world-class resort experience.</p>
     </div>
 
     <div class="grid-3" style="gap:1rem;">
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/pool-new.png" class="icon-hd" alt="infinity pool"></div>
-        <span data-cms="landing_en.amenity_pool">Infinity Pool</span>
+        <span data-cms="landing_en.amenity_pool" data-i18n="amenity_pool">Infinity Pool</span>
       </div>
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/sunbed.png" class="icon-hd" alt="beach"></div>
-        <span data-cms="landing_en.amenity_beach">Private Beach</span>
+        <span data-cms="landing_en.amenity_beach" data-i18n="amenity_beach">Private Beach</span>
       </div>
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/anchor.png" class="icon-hd" alt="anchor"></div>
-        <span data-cms="landing_en.amenity_marina">Private Marina</span>
+        <span data-cms="landing_en.amenity_marina" data-i18n="amenity_marina">Private Marina</span>
       </div>
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/jacuzzi-new.png" class="icon-hd" alt="rooftop jacuzzi"></div>
-        <span data-cms="landing_en.amenity_jacuzzi">Rooftop Jacuzzi</span>
+        <span data-cms="landing_en.amenity_jacuzzi" data-i18n="amenity_jacuzzi">Rooftop Jacuzzi</span>
       </div>
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/security-new.png" class="icon-hd" alt="24/7 security"></div>
-        <span data-cms="landing_en.amenity_security">24/7 Security</span>
+        <span data-cms="landing_en.amenity_security" data-i18n="amenity_security">24/7 Security</span>
       </div>
       <div class="amenity-item fade-up">
         <div class="amenity-icon"><img src="icons/fitness-new.png" class="icon-hd" alt="fitness centre"></div>
-        <span data-cms="landing_en.amenity_fitness">Fitness Centre</span>
+        <span data-cms="landing_en.amenity_fitness" data-i18n="amenity_fitness">Fitness Centre</span>
       </div>
     </div>
   </div>
@@ -332,7 +359,7 @@
 <section class="section bg-navy-light" id="testimonials">
   <div class="container">
     <div class="section-title fade-up">
-      <h2 data-cms="landing_en.section_testimonials_title">What Our Owners Say</h2>
+      <h2 data-cms="landing_en.section_testimonials_title" data-i18n="section_testimonials_title">What Our Owners Say</h2>
       <div class="gold-line"></div>
     </div>
 
@@ -348,7 +375,7 @@
       <!-- Col 1: Logo + Tagline + Social -->
       <div class="footer-col">
         <img src="Corallo-Logo.png" alt="Corallo Residence" height="52" style="margin-bottom:1rem;">
-        <p data-cms="landing_en.footer_tagline">Luxury Red Sea chalets at Port Ghalib — where exceptional investment meets an extraordinary lifestyle.</p>
+        <p data-cms="landing_en.footer_tagline" data-i18n="footer_tagline">Luxury Red Sea chalets at Port Ghalib — where exceptional investment meets an extraordinary lifestyle.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/Hurghadahomesrealestate" aria-label="Facebook" target="_blank" rel="noopener">
             <img src="icons/facebook.png" alt="Facebook" style="width:20px;height:20px;">
@@ -361,31 +388,31 @@
 
       <!-- Col 2: Quick Links -->
       <div class="footer-col">
-        <h4 data-cms="landing_en.footer_links_title">Quick Links</h4>
+        <h4 data-cms="landing_en.footer_links_title" data-i18n="footer_links_title">Quick Links</h4>
         <ul>
-          <li><a href="#hero" data-cms="landing_en.footer_nav_home">Home</a></li>
-          <li><a href="#units" data-cms="landing_en.footer_nav_units">Properties</a></li>
-          <li><a href="#invest" data-cms="landing_en.footer_nav_invest">Investment</a></li>
-          <li><a href="#amenities" data-cms="landing_en.footer_nav_amenities">Amenities</a></li>
-          <li><a href="#testimonials" data-cms="landing_en.footer_nav_testimonials">Testimonials</a></li>
-          <li><a href="#contact" data-cms="landing_en.footer_nav_contact">Contact</a></li>
+          <li><a href="#hero" data-cms="landing_en.footer_nav_home" data-i18n="footer_nav_home">Home</a></li>
+          <li><a href="#units" data-cms="landing_en.footer_nav_units" data-i18n="footer_nav_units">Properties</a></li>
+          <li><a href="#invest" data-cms="landing_en.footer_nav_invest" data-i18n="footer_nav_invest">Investment</a></li>
+          <li><a href="#amenities" data-cms="landing_en.footer_nav_amenities" data-i18n="footer_nav_amenities">Amenities</a></li>
+          <li><a href="#testimonials" data-cms="landing_en.footer_nav_testimonials" data-i18n="footer_nav_testimonials">Testimonials</a></li>
+          <li><a href="#contact" data-cms="landing_en.footer_nav_contact" data-i18n="footer_nav_contact">Contact</a></li>
         </ul>
       </div>
 
       <!-- Col 3: Contact -->
       <div class="footer-col">
-        <h4 data-cms="landing_en.footer_contact_title">Get in Touch</h4>
+        <h4 data-cms="landing_en.footer_contact_title" data-i18n="footer_contact_title">Get in Touch</h4>
         <div class="footer-contact-item">
           <span><img src="icons/location.png" class="icon-hd" alt="location"></span>
-          <span data-cms="landing_en.footer_contact_address">Port Ghalib, Marsa Alam, Red Sea, Egypt</span>
+          <span data-cms="landing_en.footer_contact_address" data-i18n="footer_contact_address">Port Ghalib, Marsa Alam, Red Sea, Egypt</span>
         </div>
         <div class="footer-contact-item">
           <span><i class="fi fi-hd-plane"></i></span>
-          <span data-cms="landing_en.footer_contact_airport">5 min from Marsa Alam Airport (RMF)</span>
+          <span data-cms="landing_en.footer_contact_airport" data-i18n="footer_contact_airport">5 min from Marsa Alam Airport (RMF)</span>
         </div>
         <div class="footer-contact-item">
           <span><i class="fi fi-hd-envelope"></i></span>
-          <span data-cms="landing_en.footer_contact_email">info@coralloresidence-portgahlip.com</span>
+          <span data-cms="landing_en.footer_contact_email" data-i18n="footer_contact_email">info@coralloresidence-portgahlip.com</span>
         </div>
       </div>
 
@@ -393,10 +420,10 @@
 
     <!-- Footer Bottom -->
     <div class="footer-bottom">
-      <p class="footer-disclaimer" data-cms="landing_en.footer_disclaimer">
+      <p class="footer-disclaimer" data-cms="landing_en.footer_disclaimer" data-i18n="footer_disclaimer">
         * All prices shown in EUR are indicative and subject to exchange rate fluctuations. ROI figures are based on historical performance and market projections — actual returns may vary. This page is for informational purposes only and does not constitute financial advice. Corallo Residence is a registered development in Port Ghalib, Marsa Alam, Egypt.
       </p>
-      <p class="footer-copy" data-cms="landing_en.footer_copy">
+      <p class="footer-copy" data-cms="landing_en.footer_copy" data-i18n="footer_copy">
         &copy; 2026 Corallo Residence. All rights reserved.
       </p>
     </div>
@@ -405,6 +432,7 @@
 
 <!-- ========== SCRIPTS ========== -->
 <script src="js/cms.js"></script>
+<script src="js/translations.js"></script>
 <script src="js/pixel.js"></script>
 <script src="js/form-en.js"></script>
 <script>
