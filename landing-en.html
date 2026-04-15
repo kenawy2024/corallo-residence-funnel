@@ -153,11 +153,11 @@
 </nav>
 
 <!-- ========== HERO ========== -->
-<section class="hero" id="hero" style="position:relative; overflow:hidden;">
-  <!-- Photo background -->
-  <div style="position:absolute;inset:0;background:url('icons/new.jpeg') center/cover no-repeat;z-index:0;"></div>
-  <!-- Dark + blur overlay — يخلي التكست واضح -->
-  <div style="position:absolute;inset:0;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);background:linear-gradient(160deg,rgba(10,8,30,0.72) 0%,rgba(20,15,50,0.65) 40%,rgba(30,10,20,0.70) 100%);z-index:1;"></div>
+<section class="hero" id="hero" style="position:relative; overflow:hidden; background:url('icons/new.jpeg') center/cover no-repeat !important;">
+  <!-- blur layer on the photo itself -->
+  <div style="position:absolute;inset:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:0;"></div>
+  <!-- dark gradient overlay for text readability -->
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,4,20,0.68) 0%,rgba(15,10,40,0.62) 50%,rgba(20,8,18,0.68) 100%);z-index:1;"></div>
 
   <!-- Decorative dots -->
   <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);background-size:32px 32px;pointer-events:none;z-index:2;"></div>
