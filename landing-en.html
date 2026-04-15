@@ -116,15 +116,6 @@
 </head>
 <body>
 
-<!-- Language Toggle -->
-<button id="lang-toggle"
-  style="position:fixed; top:16px; right:16px; z-index:9999;
-         background:#c9a84c; color:#fff; border:none; border-radius:24px;
-         padding:8px 18px; font-size:14px; font-weight:600; cursor:pointer;
-         box-shadow:0 2px 12px rgba(0,0,0,0.3);">
-  🌐 عربي
-</button>
-
 <!-- ========== NAVBAR ========== -->
 <nav class="navbar" id="navbar">
   <div class="container">
@@ -213,13 +204,6 @@
           <span class="dot"></span>
           <span data-cms="landing_en.hero_scarcity">Only 7 units remain at launch pricing</span>
         </span>
-      </div>
-
-      <!-- CTA Buttons -->
-      <div class="hero-cta-group fade-up">
-        <a href="#contact" class="btn btn-gold btn-lg">
-          <i class="fi fi-hd-paper-plane"></i> <span data-cms="landing_en.hero_cta_btn">Get Free Brochure</span>
-        </a>
       </div>
 
     </div>
@@ -356,78 +340,6 @@
   </div>
 </section>
 
-<!-- ========== LEAD FORM ========== -->
-<section class="section bg-dots" id="contact">
-  <div class="container">
-    <div class="section-title fade-up">
-      <h2 data-cms="landing_en.section_contact_title">Get Your Free Brochure</h2>
-      <div class="gold-line"></div>
-      <p data-cms="landing_en.section_contact_desc">Fill in your details and our international sales team will send you the full property brochure, pricing sheet, and ROI breakdown within 24 hours.</p>
-    </div>
-
-    <div class="lead-form-wrap fade-up" style="max-width:560px;">
-      <h3 style="font-family:'DM Serif Display',serif;font-weight:400;margin-bottom:0.4rem;" data-cms="landing_en.form_title">Request Information</h3>
-      <p style="font-size:0.88rem;margin-bottom:1.75rem;" data-cms="landing_en.form_subtitle">No obligation. No spam. Just the facts you need to make an informed decision.</p>
-
-      <!-- Form inner -->
-      <div id="form-inner">
-        <form id="lead-form" novalidate>
-
-          <div class="form-group">
-            <label class="form-label" for="lead-name" data-cms="landing_en.form_name_label">Full Name *</label>
-            <input type="text" id="lead-name" name="name" class="form-control"
-                   placeholder="e.g. James Anderson" data-cms-placeholder="landing_en.form_name_placeholder" autocomplete="name">
-            <div class="form-error" id="lead-name-error"></div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="lead-phone" data-cms="landing_en.form_phone_label">Phone Number *</label>
-            <input type="tel" id="lead-phone" name="phone" class="form-control"
-                   placeholder="e.g. +44 7911 123456" data-cms-placeholder="landing_en.form_phone_placeholder" autocomplete="tel">
-            <div class="form-error" id="lead-phone-error"></div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="lead-email" data-cms="landing_en.form_email_label">Email Address *</label>
-            <input type="email" id="lead-email" name="email" class="form-control"
-                   placeholder="e.g. james@example.com" data-cms-placeholder="landing_en.form_email_placeholder" autocomplete="email">
-            <div class="form-error" id="lead-email-error"></div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="lead-unit" data-cms="landing_en.form_unit_label">Unit of Interest *</label>
-            <select id="lead-unit" name="unit" class="form-control">
-              <option value="" disabled selected data-cms="landing_en.form_unit_default">Select unit type...</option>
-              <option value="studio" data-cms="landing_en.form_unit_studio">Studio — from €30,000</option>
-              <option value="1bed" data-cms="landing_en.form_unit_1bed">1 Bedroom — from €55,000</option>
-              <option value="2bed" data-cms="landing_en.form_unit_2bed">2 Bedrooms — from €100,000</option>
-              <option value="penthouse" data-cms="landing_en.form_unit_penthouse">Penthouse — from €170,000</option>
-              <option value="undecided" data-cms="landing_en.form_unit_undecided">Not sure yet — send me everything</option>
-            </select>
-            <div class="form-error" id="lead-unit-error"></div>
-          </div>
-
-          <button type="submit" class="btn btn-gold btn-block btn-lg" style="margin-top:0.5rem;" id="form-submit-btn">
-            <i class="fi fi-hd-envelope"></i> <span data-cms="landing_en.form_submit_btn">Get Free Brochure</span>
-          </button>
-
-          <p style="font-size:0.78rem;color:var(--gray);text-align:center;margin-top:0.75rem;margin-bottom:0;">
-            <i class="fi fi-hd-lock"></i> <span data-cms="landing_en.form_privacy">Your details are secure and will never be shared with third parties.</span>
-          </p>
-
-        </form>
-      </div>
-
-      <!-- Success state -->
-      <div class="form-success" id="form-success-msg">
-        <div class="check-icon"><i class="fi fi-hd-check-circle"></i></div>
-        <h3 style="font-family:'DM Serif Display',serif;font-weight:400;" data-cms="landing_en.form_success_title">Thank you!</h3>
-        <p data-cms="landing_en.form_success_text">Your brochure request has been received. Our team will be in touch within 24 hours.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== FOOTER ========== -->
 <footer class="footer-en">
   <div class="container">
@@ -498,22 +410,6 @@
 <script>
 (function() {
   'use strict';
-
-  // ---- Language switch ----
-  window.switchLang = function() {
-    var current = document.documentElement.lang;
-    var next = (current === 'ar') ? 'en' : 'ar';
-    localStorage.setItem('corallo_lang', next);
-    if (window.coralloCMS && window.coralloCMS.reloadWithLang) {
-      window.coralloCMS.reloadWithLang(next);
-    }
-  };
-
-  // Bind toggle button
-  var toggleBtn = document.getElementById('lang-toggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', window.switchLang);
-  }
 
   // ---- Navbar scroll effect ----
   var navbar = document.getElementById('navbar');
