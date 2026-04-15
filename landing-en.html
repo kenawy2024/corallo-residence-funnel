@@ -349,6 +349,30 @@
   </div>
 </section>
 
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact" class="contact-section">
+  <div class="contact-wrap">
+    <h2 class="contact-title" data-cms="landing_en.contact_title" data-i18n="contact_title">Get A Call Back</h2>
+    <p class="contact-sub" data-cms="landing_en.contact_subtitle" data-i18n="contact_subtitle">Fill the form below to receive a call from our team to answer all your questions about Corallo Residence, available units and payment plans.</p>
+    <form id="contact-form" class="contact-form" onsubmit="submitContact(event)">
+      <input type="text"  id="cf-name"  name="name"  required class="contact-input"
+             data-cms-placeholder="landing_en.contact_ph_name"  placeholder="Name">
+      <input type="email" id="cf-email" name="email" required class="contact-input"
+             data-cms-placeholder="landing_en.contact_ph_email" placeholder="Email">
+      <input type="tel"   id="cf-phone" name="phone" required class="contact-input"
+             data-cms-placeholder="landing_en.contact_ph_phone" placeholder="Mobile">
+      <select id="cf-unit" name="unit" class="contact-input contact-select">
+        <option value="Studio"    data-cms="landing_en.contact_opt_studio">Studio</option>
+        <option value="1BR"       data-cms="landing_en.contact_opt_1br">1 Bedroom</option>
+        <option value="2BR"       data-cms="landing_en.contact_opt_2br">2 Bedrooms</option>
+        <option value="Penthouse" data-cms="landing_en.contact_opt_pent">Penthouse</option>
+      </select>
+      <button type="submit" class="contact-btn" data-cms="landing_en.contact_btn" data-i18n="contact_btn">Send</button>
+      <p id="contact-msg" class="contact-result" style="display:none;"></p>
+    </form>
+  </div>
+</section>
+
 <!-- ========== FOOTER ========== -->
 <footer class="footer-en">
   <div class="container">
@@ -490,6 +514,50 @@
   }
 
 })();
+</script>
+
+<!-- ── Contact Form Handler ── -->
+<script>
+function submitContact(e) {
+  e.preventDefault();
+  var btn  = document.querySelector('.contact-btn');
+  var msg  = document.getElementById('contact-msg');
+  var lang = document.documentElement.lang;
+  btn.disabled = true;
+  btn.textContent = '…';
+  fetch('/api/submit-contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:  document.getElementById('cf-name').value,
+      email: document.getElementById('cf-email').value,
+      phone: document.getElementById('cf-phone').value,
+      unit:  document.getElementById('cf-unit').value
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    btn.disabled = false;
+    btn.textContent = lang === 'ar' ? 'إرسال' : 'Send';
+    if (d.ok) {
+      msg.textContent = lang === 'ar'
+        ? '✓ شكراً! سيتواصل معك فريقنا قريباً.'
+        : '✓ Thank you! We will call you shortly.';
+      msg.className = 'contact-result success';
+      msg.style.display = 'block';
+      document.getElementById('contact-form').reset();
+    } else { throw new Error(d.error || 'Error'); }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = lang === 'ar' ? 'إرسال' : 'Send';
+    msg.textContent = lang === 'ar'
+      ? '✗ حدث خطأ، حاول مرة أخرى.'
+      : '✗ Something went wrong, please try again.';
+    msg.className = 'contact-result error';
+    msg.style.display = 'block';
+  });
+}
 </script>
 
 </body>

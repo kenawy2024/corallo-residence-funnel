@@ -479,9 +479,61 @@
 
   function showTabByName(name) {
     var btns = document.querySelectorAll('.tab-btn');
-    var tabNames = ['general','landing-a','landing-b','landing-en','github'];
+    var tabNames = ['general','landing-a','landing-b','landing-en','contacts','github'];
     var idx = tabNames.indexOf(name);
     if (idx >= 0 && btns[idx]) showTab(name, btns[idx]);
+  }
+
+  // ==================== CONTACTS ====================
+  window.loadContacts = function () {
+    var token = GH.token();
+    var statusEl = document.getElementById('contacts-status');
+    var tbody = document.getElementById('contacts-body');
+    if (!token) {
+      statusEl.textContent = '⚠️ ادخل GitHub Token في تبويب إعدادات GitHub أولاً';
+      return;
+    }
+    statusEl.textContent = 'جاري التحميل…';
+    var apiUrl = 'https://api.github.com/repos/' + GH.owner() + '/' + GH.repo() +
+                 '/contents/contacts.json?ref=' + GH.branch();
+    fetch(apiUrl, { headers: { 'Authorization': 'token ' + token } })
+      .then(function (r) {
+        if (r.status === 404) throw new Error('لا توجد رسائل بعد — لم يتم إرسال أي نموذج');
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (f) {
+        var data = JSON.parse(atob(f.content.replace(/\n/g, '')));
+        tbody.innerHTML = '';
+        if (!data.length) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--gray);">لا توجد رسائل بعد</td></tr>';
+          statusEl.textContent = 'لا توجد رسائل';
+          return;
+        }
+        data.slice().reverse().forEach(function (c) {
+          var tr = document.createElement('tr');
+          var dateStr = c.date ? new Date(c.date).toLocaleString('ar-EG') : '—';
+          tr.innerHTML =
+            '<td>' + escHtml(dateStr)          + '</td>' +
+            '<td>' + escHtml(c.name  || '—')   + '</td>' +
+            '<td>' + escHtml(c.email || '—')   + '</td>' +
+            '<td>' + escHtml(c.phone || '—')   + '</td>' +
+            '<td>' + escHtml(c.unit  || '—')   + '</td>';
+          tbody.appendChild(tr);
+        });
+        statusEl.textContent = 'عدد الرسائل: ' + data.length;
+      })
+      .catch(function (e) {
+        statusEl.textContent = '❌ ' + e.message;
+      });
+  };
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   // ==================== GITHUB SETTINGS ====================

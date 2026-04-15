@@ -367,6 +367,7 @@
       <button class="tab-btn" onclick="showTab('landing-a', this)">📄 Landing A — عربي</button>
       <button class="tab-btn" onclick="showTab('landing-b', this)">📈 Landing B — عربي</button>
       <button class="tab-btn" onclick="showTab('landing-en', this)">🌍 Landing EN</button>
+      <button class="tab-btn" onclick="showTab('contacts', this)">📞 Contacts</button>
       <button class="tab-btn" onclick="showTab('github', this)">🔑 إعدادات GitHub</button>
     </aside>
 
@@ -635,6 +636,31 @@
           </table>
         </div>
         <button class="btn btn-outline btn-sm" onclick="addTestimonialRow()">+ Add Testimonial</button>
+      </div>
+
+      <!-- ===== CONTACTS TAB ===== -->
+      <div id="tab-contacts" class="tab-panel">
+        <div class="section-heading">📞 Contacts — الرسائل الواردة</div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+          <p id="contacts-status" style="color: var(--gray); font-size:0.9rem;">اضغط "تحميل" لعرض الرسائل</p>
+          <button onclick="loadContacts()" style="padding:0.4rem 1.2rem; background:var(--gold); color:#000; border:none; border-radius:6px; cursor:pointer; font-family:'Cairo',sans-serif; font-weight:600;">تحميل</button>
+        </div>
+        <div class="units-table-wrap">
+          <table class="units-table" id="contacts-table">
+            <thead>
+              <tr>
+                <th>التاريخ</th>
+                <th>الاسم</th>
+                <th>البريد الإلكتروني</th>
+                <th>الموبايل</th>
+                <th>الوحدة</th>
+              </tr>
+            </thead>
+            <tbody id="contacts-body">
+              <tr><td colspan="5" style="text-align:center; color:var(--gray);">لا توجد بيانات بعد</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- ===== GITHUB TAB ===== -->

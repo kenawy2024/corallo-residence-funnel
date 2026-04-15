@@ -698,3 +698,75 @@ select.form-control {
 [dir=rtl] .card { text-align: center; }
 [dir=rtl] .lead-form-wrap h3 { font-family: 'Cairo', sans-serif !important; }
 [dir=rtl] .lead-form-wrap p { font-family: 'Cairo', sans-serif; }
+
+/* ── Contact Section ── */
+.contact-section {
+  background: #E8E4DC;
+  padding: 5rem 1.5rem;
+}
+.contact-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.contact-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.contact-sub {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+  font-family: 'Raleway', sans-serif;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.contact-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.98rem;
+  font-family: 'Raleway', sans-serif;
+  background: #fff;
+  color: #2a2a2a;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.contact-input:focus { border-color: #484EA3; }
+.contact-select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+.contact-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #484EA3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.03em;
+}
+.contact-btn:hover { background: #3a3f8f; }
+.contact-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+.contact-result { margin-top: 0.5rem; font-size: 0.95rem; font-family: 'Raleway', sans-serif; }
+.contact-result.success { color: #1a7a4a; }
+.contact-result.error   { color: #c35031; }
+
+/* Contact RTL overrides */
+[dir=rtl] .contact-wrap  { text-align: right; }
+[dir=rtl] .contact-title { font-family: 'Cairo', sans-serif !important; }
+[dir=rtl] .contact-sub   { font-family: 'Cairo', sans-serif; }
+[dir=rtl] .contact-input { font-family: 'Cairo', sans-serif; text-align: right; direction: rtl; }
+[dir=rtl] .contact-btn   { font-family: 'Cairo', sans-serif; letter-spacing: 0; }
+[dir=rtl] .contact-result { font-family: 'Cairo', sans-serif; }
