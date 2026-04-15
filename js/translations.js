@@ -81,7 +81,7 @@
 
       section_testimonials_title: 'What Our Owners Say',
       testimonials: [
-        { text: 'We purchased a 1-bedroom unit in 2023. The location is stunning and the management team is exceptionally professional. We are very happy with this investment.',     name: 'James & Claire M.', location: 'Manchester, United Kingdom' },
+        { text: 'We purchased a 1-bedroom unit. The location is stunning and the management team is exceptionally professional. We are very happy with this investment.',     name: 'James & Claire M.', location: 'Manchester, United Kingdom' },
         { text: 'I was looking for a Red Sea investment and Corallo was the ideal choice. The return exceeds my expectations and the management is excellent.',                       name: 'Thomas M.',          location: 'Munich, Germany'           },
         { text: 'As an Egyptian living in Cairo, I wanted a holiday and investment property. Corallo combines both perfectly.',                                                       name: 'Ahmed K.',           location: 'Cairo, Egypt'              }
       ],
@@ -173,7 +173,7 @@
 
       section_testimonials_title: 'ماذا يقول ملاكنا',
       testimonials: [
-        { text: 'اشترينا وحدة غرفة نوم واحدة في عام 2023. الموقع رائع والفريق المشرف على الإدارة محترف للغاية. نحن سعداء جداً بهذا الاستثمار.',           name: 'جيمس وكلير م.',  location: 'مانشستر، المملكة المتحدة' },
+        { text: 'اشترينا وحدة غرفة نوم واحدة. الموقع رائع والفريق المشرف على الإدارة محترف للغاية. نحن سعداء جداً بهذا الاستثمار.',           name: 'جيمس وكلير م.',  location: 'مانشستر، المملكة المتحدة' },
         { text: 'كنت أبحث عن استثمار في البحر الأحمر وكورالو كان الخيار الأمثل. العائد يتجاوز توقعاتي والإدارة ممتازة.',                                   name: 'توماس م.',        location: 'ميونخ، ألمانيا'           },
         { text: 'كمصري مقيم في القاهرة، أردت عقاراً للإجازات والاستثمار. كورالو يجمع الاثنين بشكل مثالي.',                                                 name: 'أحمد ك.',          location: 'القاهرة، مصر'             }
       ],
@@ -265,7 +265,7 @@
 
       section_testimonials_title: 'Cosa Dicono i Nostri Proprietari',
       testimonials: [
-        { text: 'Abbiamo acquistato un bilocale nel 2023. La posizione è magnifica e il team di gestione è estremamente professionale. Siamo molto soddisfatti di questo investimento.',  name: 'James & Claire M.', location: 'Manchester, Regno Unito'        },
+        { text: 'Abbiamo acquistato un bilocale. La posizione è magnifica e il team di gestione è estremamente professionale. Siamo molto soddisfatti di questo investimento.',  name: 'James & Claire M.', location: 'Manchester, Regno Unito'        },
         { text: 'Cercavo un investimento nel Mar Rosso e Corallo era la scelta ideale. Il rendimento supera le mie aspettative e la gestione è eccellente.',                              name: 'Thomas M.',          location: 'Monaco di Baviera, Germania'   },
         { text: 'Da egiziano che vive al Cairo, volevo una proprietà per le vacanze e l\'investimento. Corallo combina perfettamente entrambi.',                                          name: 'Ahmed K.',           location: 'Cairo, Egitto'                 }
       ],
