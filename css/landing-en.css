@@ -294,6 +294,16 @@ select.form-control {
   position: relative;
 }
 
+/* Unit cards — purple price + hover shadow */
+.unit-price {
+  color: #484EA3 !important;
+}
+
+.unit-card:hover {
+  border-color: #484EA3 !important;
+  box-shadow: 0 6px 28px rgba(72,78,163,0.35) !important;
+}
+
 /* ============================================
    WHY INVEST SECTION
    ============================================ */
