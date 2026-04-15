@@ -294,14 +294,26 @@ select.form-control {
   position: relative;
 }
 
-/* Unit cards — purple price + hover shadow */
-.unit-price {
-  color: #484EA3 !important;
+/* Unit cards — purple highlights */
+.unit-card {
+  border-color: rgba(72,78,163,0.18) !important;
 }
 
 .unit-card:hover {
   border-color: #484EA3 !important;
-  box-shadow: 0 6px 28px rgba(72,78,163,0.35) !important;
+  box-shadow: 0 8px 32px rgba(72,78,163,0.35) !important;
+}
+
+.unit-card-img {
+  background: linear-gradient(135deg, #2d3282 0%, #484EA3 50%, #3a3f8f 100%) !important;
+}
+
+.unit-card-img::after {
+  background: linear-gradient(transparent, #ffffff) !important;
+}
+
+.unit-price {
+  color: #484EA3 !important;
 }
 
 /* ============================================
